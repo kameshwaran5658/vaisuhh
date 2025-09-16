@@ -18,12 +18,56 @@
             box-sizing: border-box;
         }
 
+        html {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Mobile Orientation and Touch Improvements */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .main-title {
+                font-size: clamp(1.5rem, 4vw, 2.2rem) !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .text-line {
+                font-size: clamp(0.7rem, 2vw, 0.9rem) !important;
+                margin: 3px 0 !important;
+            }
+            
+            .photos-grid {
+                height: 250px !important;
+            }
+            
+            .photo-frame,
+            .photo-card img {
+                width: 180px !important;
+                height: 180px !important;
+            }
+            
+            .cake-emoji {
+                font-size: 3rem !important;
+                margin: 10px 0 !important;
+            }
+            
+            .knife-clickzone {
+                padding: 20px !important;
+                margin: 10px !important;
+                min-height: 120px !important;
+            }
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: #000;
             color: white;
             overflow: hidden;
             height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-overflow-scrolling: touch;
         }
 
         .birthday-font {
@@ -72,6 +116,24 @@
             box-shadow: 0 0 80px rgba(139, 92, 246, 0.9);
         }
 
+        .lets-go-btn:active {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.8);
+        }
+
+        /* Mobile touch improvements */
+        @media (max-width: 768px) {
+            .lets-go-btn:hover {
+                transform: none; /* Disable hover on mobile */
+                box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
+            }
+            
+            .lets-go-btn:active {
+                transform: scale(0.95);
+                box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+            }
+        }
+
         @keyframes pulseGlow {
             0%, 100% {
                 box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
@@ -111,6 +173,12 @@
             background: white;
             border-radius: 50%;
             animation: starZoom 4s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            .star {
+                animation-duration: 3s !important;
+            }
         }
 
         @keyframes starZoom {
@@ -565,79 +633,117 @@
             100% { opacity: 1; }
         }
 
-        /* Responsive Design for Wishes Stage */
+        /* Enhanced Mobile Responsive Design for Wishes Stage */
         @media (max-width: 768px) {
+            .wishes-container {
+                padding: 15px 10px !important;
+                height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                overflow: hidden !important;
+            }
+
             .main-title {
-                font-size: 3.5rem;
-                margin-bottom: 20px;
+                font-size: clamp(2.2rem, 6vw, 3.2rem) !important;
+                margin-bottom: 15px !important;
+                text-align: center !important;
+                line-height: 1.1 !important;
+                padding: 0 15px !important;
+            }
+            
+            .animated-text {
+                margin-bottom: 10px !important;
             }
             
             .text-line {
-                font-size: 1.4rem;
-                margin: 10px 0;
+                font-size: clamp(0.9rem, 3vw, 1.2rem) !important;
+                margin: 5px 0 !important;
+                padding: 0 15px !important;
+                line-height: 1.2 !important;
             }
             
             .photos-grid {
-                height: 420px;
-                margin: 15px 0;
+                height: 350px !important;
+                margin: 10px 0 !important;
+                padding: 0 10px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
             
             .photo-frame {
-                width: 280px;
-                height: 280px;
+                width: 250px !important;
+                height: 250px !important;
+            }
+            
+            .photo-card {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
             }
             
             .photo-card img {
-                width: 280px;
-                height: 280px;
+                width: 250px !important;
+                height: 250px !important;
+                object-fit: cover !important;
             }
             
             .wish-message {
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translate(-50%, 10px);
-                max-width: 280px;
-                font-size: 1rem;
-                padding: 12px 20px;
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                margin-top: 15px !important;
+                max-width: 280px !important;
+                min-width: 250px !important;
+                font-size: 0.95rem !important;
+                padding: 12px 18px !important;
+                text-align: center !important;
+                white-space: normal !important;
+                word-wrap: break-word !important;
             }
             
-            .wishes-container {
-                padding: 20px 15px;
+            .photo-card:nth-child(1) .wish-message,
+            .photo-card:nth-child(2) .wish-message,
+            .photo-card:nth-child(3) .wish-message {
+                animation: messageSequenceMobile 5s ease-in-out forwards;
             }
         }
 
         @media (max-width: 480px) {
             .main-title {
-                font-size: 2.8rem;
+                font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+                padding: 0 10px !important;
             }
             
             .text-line {
-                font-size: 1.2rem;
+                font-size: clamp(0.8rem, 2.5vw, 1rem) !important;
+                padding: 0 10px !important;
             }
             
             .photos-grid {
-                height: 360px;
+                height: 300px !important;
+                padding: 0 5px !important;
             }
             
             .photo-frame {
-                width: 240px;
-                height: 240px;
+                width: 200px !important;
+                height: 200px !important;
             }
             
             .photo-card img {
-                width: 240px;
-                height: 240px;
+                width: 200px !important;
+                height: 200px !important;
             }
             
             .wish-message {
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translate(-50%, 10px);
-                max-width: 240px;
-                font-size: 0.9rem;
-                padding: 10px 15px;
+                max-width: 220px !important;
+                min-width: 200px !important;
+                font-size: 0.85rem !important;
+                padding: 10px 15px !important;
+                margin-top: 12px !important;
             }
         }
 
@@ -653,6 +759,25 @@
             100% { 
                 opacity: 0; 
                 transform: translateY(-40px) scale(0); 
+            }
+        }
+
+        @keyframes messageSequenceMobile {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 30px) scale(0.8);
+            }
+            15% {
+                opacity: 1;
+                transform: translate(-50%, 10px) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translate(-50%, 10px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -10px) scale(0.8);
             }
         }
 
@@ -709,69 +834,663 @@
             opacity: 1;
         }
 
+        .stage-thankyou {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f4c75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 800;
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 2s ease;
+        }
+
+        .stage-thankyou.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+            animation: finalSlideEntrance 2s ease-out forwards;
+        }
+
+        .final-birthday-content {
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .title-container {
+            margin-bottom: 40px;
+        }
+
+        .final-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD, #E9D5FF, #8B5CF6);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            animation: gradientShift 3s ease-in-out infinite, titleBounce 2s ease-out 0.5s forwards;
+            transform: translateY(-50px);
+            opacity: 0;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .sparkles {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: sparkleFloat 2s ease-in-out infinite alternate;
+        }
+
+        .thank-you-messages {
+            margin-bottom: 40px;
+        }
+
+        .message-line {
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            color: #E9D5FF;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        .message-1 {
+            animation: slideInLeft 1s ease-out 1.5s forwards;
+        }
+
+        .message-2 {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            color: #C4B5FD;
+            transform: translateX(100px);
+            animation: slideInRight 1s ease-out 2s forwards;
+        }
+
+        .message-3 {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            color: #A78BFA;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease-out 2.5s forwards;
+        }
+
+        .message-4 {
+            font-size: clamp(1.2rem, 3.2vw, 1.7rem);
+            color: #DDD6FE;
+            font-weight: bold;
+            transform: scale(0.5);
+            animation: popIn 1s ease-out 3s forwards;
+        }
+
+        .celebration-section {
+            margin-top: 30px;
+        }
+
+        .celebration-hearts {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 20px;
+            animation: heartPulse 2s ease-in-out infinite alternate, fadeInScale 1s ease-out 3.5s forwards;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .final-wishes {
+            font-size: clamp(1rem, 2.8vw, 1.4rem);
+            color: #F3E8FF;
+            animation: glow 2s ease-in-out infinite alternate, slideInUp 1s ease-out 4s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            overflow: hidden;
         }
 
         .slide {
             position: absolute;
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             opacity: 0;
-            transform: scale(0.8);
-            transition: all 1s ease-in-out;
+            gap: 60px;
+            padding: 0 40px;
+            box-sizing: border-box;
         }
 
-        .slide.active {
+        .slide.left-image {
+            flex-direction: row !important;
+        }
+
+        .slide.right-image {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Slide Transition Effects */
+        .slide.fade-in {
+            transform: scale(0.8);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .slide.fade-in.active {
             opacity: 1;
             transform: scale(1);
         }
 
-        .slide img {
+        .slide.slide-up {
+            transform: translateY(100px);
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .slide.slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.slide-down {
+            transform: translateY(-100px);
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .slide.slide-down.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.slide-left {
+            transform: translateX(-100px);
+            transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .slide.slide-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.slide-right {
+            transform: translateX(100px);
+            transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .slide.slide-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.zoom-in {
+            transform: scale(0.3);
+            transition: opacity 1.4s ease, transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .slide.zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide.rotate-in {
+            transform: scale(0.5);
+            transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .slide.rotate-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide.bounce-in {
+            transform: scale(0.3) translateY(-50px);
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .slide.bounce-in.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .slide.elastic-in {
+            transform: scale(0.1);
+            transition: opacity 1s ease, transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .slide.elastic-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide-image-container {
+            flex: 0 0 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            max-width: 50%;
+        }
+
+        .slide img,
+        .slide video {
             max-width: 100%;
-            max-height: 500px;
+            max-height: 70vh;
             width: auto;
             height: auto;
             object-fit: contain;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
-            margin-bottom: 30px;
-            margin-top: 15px;
             background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 1s ease 0.2s;
+        }
+
+        .slide.active img,
+        .slide.active video {
+            opacity: 1;
+            transform: scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg) !important;
+        }
+
+        /* Image and video specific effects */
+        .slide.zoom-in img,
+        .slide.zoom-in video {
+            transform: scale(0.2);
+            transition: all 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
+        }
+
+        .slide.rotate-in img,
+        .slide.rotate-in video {
+            transform: scale(0.3);
+            transition: all 1.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+        }
+
+        .slide.bounce-in img,
+        .slide.bounce-in video {
+            transform: scale(0.2) translateY(-30px);
+            transition: all 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
+        }
+
+        .slide.elastic-in img,
+        .slide.elastic-in video {
+            transform: scale(0.05);
+            transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
+        }
+
+        .slide-content {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            padding: 30px;
+            z-index: 2;
+            height: 100%;
+            max-width: 50%;
+        }
+
+        .slide.right-image .slide-content {
+            text-align: right;
+        }
+
+        .slide.left-image .slide-content {
+            text-align: left;
+        }
+
+        .slide-content h3,
+        .slide-content .slide-title {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .slide-content p,
+        .slide-content .slide-description {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.6s;
+        }
+
+        .slide.active .slide-content h3,
+        .slide.active .slide-content p,
+        .slide.active .slide-content .slide-title,
+        .slide.active .slide-content .slide-description {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .slide-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: #C4B5FD;
+            text-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+            line-height: 1.2;
         }
 
         .slide-description {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #E9D5FF;
-            line-height: 1.6;
+            line-height: 1.7;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+        }
+
+        .slide.right-image .slide-description {
+            margin-left: auto;
+        }
+
+        .slide.left-image .slide-description {
+            margin-right: auto;
+        }
+
+        /* Stage 5: Mobile Slideshow Responsive Design - Complete Override */
+        @media (max-width: 768px) {
+            /* Fix stage memories container */
+            .stage-memories {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                overflow: hidden !important;
+                z-index: 600 !important;
+            }
+
+            .slideshow-container {
+                position: relative !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                overflow: hidden !important;
+            }
+            
+            .slide {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+            }
+            
+            /* Override left/right positioning for mobile - always use column layout */
+            .slide.left-image,
+            .slide.right-image {
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 20px !important;
+            }
+            
+            .slide-image-container {
+                flex: none !important;
+                width: 100vw !important;
+                height: 60vh !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                order: 1 !important;
+                margin: 0 !important;
+                padding: 0 15px !important;
+                box-sizing: border-box !important;
+            }
+            
+            .slide img,
+            .slide video {
+                max-height: 55vh !important;
+                max-width: calc(100vw - 30px) !important;
+                width: auto !important;
+                height: auto !important;
+                object-fit: contain !important;
+                border-radius: 12px !important;
+                box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4) !important;
+                display: block !important;
+                margin: 0 auto !important;
+                position: relative !important;
+                transform: translateX(0) translateY(0) !important;
+            }
+            
+            .slide-content {
+                flex: none !important;
+                width: 100vw !important;
+                height: 40vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                text-align: center !important;
+                order: 2 !important;
+                padding: 20px 20px 40px 20px !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+                overflow-y: auto !important;
+            }
+            
+            /* Override desktop positioning for mobile */
+            .slide.left-image .slide-content,
+            .slide.right-image .slide-content {
+                order: 2 !important;
+                text-align: center !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                width: 100vw !important;
+                height: 40vh !important;
+                margin: 0 !important;
+                padding: 20px 20px 40px 20px !important;
+            }
+            
+            .slide.left-image .slide-image-container,
+            .slide.right-image .slide-image-container {
+                order: 1 !important;
+                width: 100vw !important;
+                height: 60vh !important;
+                margin: 0 !important;
+            }
+            
+            .slide-title,
+            .slide .slide-title {
+                font-size: clamp(1.3rem, 4.5vw, 1.7rem) !important;
+                line-height: 1.3 !important;
+                color: #C4B5FD !important;
+                text-shadow: 0 2px 10px rgba(139, 92, 246, 0.5) !important;
+                margin: 0 0 15px 0 !important;
+                padding: 0 15px !important;
+                width: 100% !important;
+                text-align: center !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+                transform: none !important;
+                transition: none !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                font-weight: 600 !important;
+            }
+            
+            .slide-description,
+            .slide .slide-description {
+                font-size: clamp(0.9rem, 3.2vw, 1.1rem) !important;
+                line-height: 1.5 !important;
+                color: #E9D5FF !important;
+                margin: 0 !important;
+                padding: 0 15px !important;
+                width: 100% !important;
+                text-align: center !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+                transform: none !important;
+                transition: none !important;
+                max-width: none !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            
+            /* Simplified mobile animations */
+            .slide.slide-left,
+            .slide.slide-right,
+            .slide.slide-up,
+            .slide.slide-down,
+            .slide.zoom-in,
+            .slide.bounce-in,
+            .slide.elastic-in,
+            .slide.fade-in {
+                opacity: 0 !important;
+                transform: translateY(30px) scale(0.95) !important;
+                transition: opacity 0.6s ease, transform 0.6s ease !important;
+            }
+            
+            .slide.slide-left.active,
+            .slide.slide-right.active,
+            .slide.slide-up.active,
+            .slide.slide-down.active,
+            .slide.zoom-in.active,
+            .slide.bounce-in.active,
+            .slide.elastic-in.active,
+            .slide.fade-in.active {
+                opacity: 1 !important;
+                transform: translateY(0) scale(1) !important;
+            }
+            
+            /* Force complete visibility for all content */
+            .slide * {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .slide.active * {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Final message mobile optimization */
+            .final-slide {
+                padding: 30px 20px !important;
+            }
+            
+            .final-birthday-message {
+                text-align: center !important;
+                max-width: 100% !important;
+            }
+            
+            .final-title {
+                font-size: clamp(1.8rem, 6vw, 2.8rem) !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .final-message-1 {
+                font-size: clamp(1rem, 3vw, 1.3rem) !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .final-message-2 {
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+            }
+            
+            .celebration-hearts {
+                font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
+                margin-top: 20px !important;
+            }
+        }
+
+        /* Extra small mobile screens */
+        @media (max-width: 480px) {
+            .slide-image-container {
+                height: 55vh !important;
+                padding: 0 10px !important;
+            }
+            
+            .slide img,
+            .slide video {
+                max-height: 50vh !important;
+                max-width: calc(100vw - 20px) !important;
+                border-radius: 10px !important;
+            }
+            
+            .slide-content {
+                height: 45vh !important;
+                padding: 15px 15px 30px 15px !important;
+            }
+            
+            .slide-title,
+            .slide .slide-title {
+                font-size: clamp(1.1rem, 4.2vw, 1.4rem) !important;
+                margin-bottom: 12px !important;
+                padding: 0 10px !important;
+                line-height: 1.25 !important;
+            }
+            
+            .slide-description,
+            .slide .slide-description {
+                font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+                padding: 0 10px !important;
+                line-height: 1.4 !important;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .slide {
+                flex-direction: row !important;
+                padding: 10px !important;
+            }
+            
+            .slide-image-container {
+                width: 50vw !important;
+                height: 100vh !important;
+                order: 1 !important;
+                padding: 10px !important;
+            }
+            
+            .slide img,
+            .slide video {
+                max-height: 80vh !important;
+                max-width: calc(50vw - 20px) !important;
+            }
+            
+            .slide-content {
+                width: 50vw !important;
+                height: 100vh !important;
+                order: 2 !important;
+                padding: 20px 15px !important;
+                justify-content: center !important;
+            }
+            
+            .slide.left-image {
+                flex-direction: row !important;
+            }
+            
+            .slide.right-image {
+                flex-direction: row-reverse !important;
+            }
         }
 
         /* Responsive image sizing for desktop */
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
             .photo-card img {
                 width: 400px;
                 height: 400px;
             }
             
-            .slide img {
+            .slide img,
+            .slide video {
                 max-height: 600px;
-                max-width: 80%;
-            }
-            
-            .slide {
-                padding: 40px;
             }
         }
 
@@ -781,11 +1500,21 @@
                 height: 450px;
             }
             
-            .slide img {
+            .slide img,
+            .slide video {
                 max-height: 700px;
-                max-width: 70%;
+            }
+            
+            .slideshow-container {
+                padding: 60px;
+            }
+            
+            .slide {
+                gap: 80px;
             }
         }
+
+        /* Videos now use pure autoplay - no controls or overlays needed */
 
         /* Audio Controls */
         .audio-control {
@@ -800,13 +1529,152 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Responsive Design */
+        /* Comprehensive Mobile Responsive Design */
         @media (max-width: 768px) {
-            .main-title { font-size: 3rem; }
-            .photo-card img { width: 150px; height: 150px; }
-            .cake-emoji { font-size: 6rem; }
-            .knife { font-size: 3rem; }
-            .photos-grid { gap: 30px; }
+            /* Stage 1: Start Button */
+            .lets-go-btn {
+                padding: 15px 40px !important;
+                font-size: 1.5rem !important;
+                min-width: 200px !important;
+            }
+
+            /* Stage 3: Wishes Stage */
+            .main-title { 
+                font-size: 2.8rem !important; 
+                line-height: 1.1 !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .text-line {
+                font-size: 1.1rem !important;
+                margin: 6px 0 !important;
+                padding: 0 15px !important;
+            }
+
+            .photos-grid { 
+                height: 350px !important;
+                padding: 0 10px !important;
+            }
+            
+            .photo-card img { 
+                width: 250px !important; 
+                height: 250px !important; 
+            }
+
+            .photo-frame {
+                width: 250px !important;
+                height: 250px !important;
+            }
+
+            .wish-message {
+                position: absolute !important;
+                top: 100% !important;
+                left: 50% !important;
+                transform: translate(-50%, 15px) !important;
+                max-width: 250px !important;
+                min-width: 200px !important;
+                font-size: 0.9rem !important;
+                padding: 10px 15px !important;
+                text-align: center !important;
+                white-space: normal !important;
+            }
+
+            /* Stage 4: Cake Stage */
+            .cake-emoji { 
+                font-size: 5rem !important;
+                margin: 15px 0 !important;
+            }
+            
+            .knife { 
+                font-size: 2.5rem !important;
+                padding: 15px !important;
+            }
+            
+            .knife-clickzone {
+                padding: 40px 30px !important;
+                margin: 20px !important;
+                min-width: 280px !important;
+                min-height: 200px !important;
+            }
+            
+            .cut-instruction {
+                font-size: 1.2rem !important;
+                padding: 0 20px !important;
+                text-align: center !important;
+            }
+
+            .click-hint {
+                font-size: 0.9rem !important;
+            }
+
+            /* Audio Controls */
+            .audio-control {
+                top: 15px !important;
+                right: 15px !important;
+                padding: 8px 15px !important;
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .lets-go-btn {
+                padding: 12px 30px !important;
+                font-size: 1.3rem !important;
+                min-width: 180px !important;
+            }
+
+            .main-title { 
+                font-size: 2.2rem !important; 
+                padding: 0 10px !important;
+            }
+            
+            .text-line {
+                font-size: 1rem !important;
+                padding: 0 10px !important;
+            }
+
+            .photo-card img { 
+                width: 200px !important; 
+                height: 200px !important; 
+            }
+
+            .photo-frame {
+                width: 200px !important;
+                height: 200px !important;
+            }
+
+            .wish-message {
+                max-width: 200px !important;
+                min-width: 180px !important;
+                font-size: 0.8rem !important;
+                padding: 8px 12px !important;
+            }
+
+            .cake-emoji { 
+                font-size: 4rem !important;
+            }
+            
+            .knife { 
+                font-size: 2rem !important;
+                padding: 12px !important;
+            }
+            
+            .knife-clickzone {
+                padding: 30px 20px !important;
+                margin: 15px !important;
+                min-width: 240px !important;
+                min-height: 180px !important;
+            }
+            
+            .cut-instruction {
+                font-size: 1rem !important;
+                padding: 0 15px !important;
+            }
+
+            .click-hint {
+                font-size: 0.8rem !important;
+            }
         }
 
         /* Stage Display Control */
@@ -820,8 +1688,137 @@
             z-index: 800;
         }
 
-        .stage-universe.active, .stage-wishes.active, .stage-cake.active, .stage-memories.active {
+        .stage-universe.active, .stage-wishes.active, .stage-cake.active, .stage-memories.active, .stage-thankyou.active {
             display: flex;
+        }
+
+        /* Enhanced Thank You Message Animations */
+        @keyframes finalSlideEntrance {
+            0% { 
+                opacity: 0;
+                transform: scale(0.3) rotateY(180deg);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1) rotateY(90deg);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { 
+                background-position: 0% 50%; 
+            }
+            50% { 
+                background-position: 100% 50%; 
+            }
+        }
+
+        @keyframes titleBounce {
+            0% { 
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(10px) scale(1.1);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% { 
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% { 
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            0% { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% { 
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0% { 
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+            100% { 
+                transform: translateX(-50%) translateY(-10px) rotate(10deg);
+            }
+        }
+
+        @keyframes glow {
+            0% { 
+                text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            }
+            100% { 
+                text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        @keyframes heartPulse {
+            0% { 
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% { 
+                transform: scale(1.2);
+                opacity: 1;
+                text-shadow: 0 0 15px rgba(139, 92, 246, 0.7);
+            }
         }
     </style>
 </head>
@@ -905,7 +1902,7 @@
     <!-- Stage 4: Knife and Cake Animation -->
     <div class="stage-cake" id="stageCake">
         <div class="cake-container">
-            <h2 class="main-title birthday-font" style="font-size: 4rem; margin-bottom: 30px;">Time to Cut the Cake!</h2>
+            <h2 class="main-title birthday-font" style="font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 20px; text-align: center; padding: 0 20px;">Time to Cut the Cake!</h2>
             <div class="cake-emoji">🎂</div>
             
             <!-- Large clickable area around knife -->
@@ -927,10 +1924,69 @@
         </div>
     </div>
 
-    <!-- Audio for Happy Birthday Song -->
+    <!-- Stage 6: Thank You Message -->
+    <div class="stage-thankyou" id="stageThankYou">
+        <div class="final-birthday-content">
+            
+            <!-- Animated Title -->
+            <div class="title-container">
+                <h1 class="birthday-font final-title">
+                    🎉 Happy Birthday Vaisuhhhh! 💜
+                </h1>
+                <div class="sparkles">✨ ⭐ ✨ ⭐ ✨</div>
+            </div>
+            
+            <!-- Thank You Messages with Staggered Animation -->
+            <div class="thank-you-messages">
+                <p class="message-line message-1">
+                    💝 Thank you for being absolutely amazing, Vaisuhhhh! 💝
+                </p>
+                
+                <p class="message-line message-2">
+                    🌟 Your kindness, beauty, and wonderful spirit brighten every day! 🌟
+                </p>
+                
+                <p class="message-line message-3">
+                    🎈 May this new year bring you endless happiness, love, and success! 🎈
+                </p>
+                
+                <p class="message-line message-4">
+                    🎂✨ You deserve all the wonderful things life has to offer! ✨🎂
+                </p>
+            </div>
+            
+            <!-- Animated Hearts and Celebration -->
+            <div class="celebration-section">
+                <div class="celebration-hearts">
+                    💜 🎉 ✨ 🎂 🫶🏻 🎈 💖 💝 💜
+                </div>
+                
+                <div class="final-wishes">
+                    🎊 Wishing you the most magical birthday ever! 🎊<br>
+                    💫 Stay amazing, stay beautiful, stay you! 💫
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for Happy Birthday Song (local file) -->
     <audio id="birthdaySong" preload="auto">
-        <source src="https://www.soundjay.com/misc/sounds/happy-birthday-song.mp3" type="audio/mpeg">
+        <source src="hb.mp3" type="audio/mpeg">
         <!-- Fallback: we'll use Web Audio API to generate a simple happy birthday tune -->
+    </audio>
+
+    <!-- Countdown Sound Effects (using Web Audio API instead of external files) -->
+    <audio id="countdownTick" preload="auto" style="display: none;">
+        <!-- Will be generated using Web Audio API -->
+    </audio>
+    
+    <audio id="countdownFinal" preload="auto" style="display: none;">
+        <!-- Will be generated using Web Audio API -->
+    </audio>
+
+    <!-- Background Music for Stages 2-4 -->
+    <audio id="backgroundMusic" preload="auto" loop style="display: none;">
+        <source src="start.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Audio Control -->
@@ -967,7 +2023,27 @@
             { src: 'vaisuhh-photos/Snapchat-2136970077.jpg', title: 'Vaisuhhhh\'s💜 Fresh Vibes', description: 'Fresh and vibrant energy always radiates from Vaisuhhhh, bringing a breath of fresh air to every photo and moment.' },
             { src: 'vaisuhh-photos/Snapchat-457702673.jpg', title: 'Vaisuhhhh\'s💜 Dreamy Looks', description: 'Looking dreamy and ethereal, this photo captures Vaisuhhhh\'s otherworldly beauty and gentle, captivating presence.' },
             { src: 'vaisuhh-photos/Snapchat-554945129.jpg', title: 'Vaisuhhhh\'s💜 Grace', description: 'Graceful like a beautiful butterfly, Vaisuhhhh moves through life with elegance and poise that inspires everyone around her.' },
-            { src: 'vaisuhh-photos/Snapchat-984924612~2.jpg', title: 'Vaisuhhhh the Queen', description: 'The absolute queen of beauty and grace, this final photo showcases why Vaisuhhhh truly deserves to be celebrated today and always!' }
+            { src: 'vaisuhh-photos/Snapchat-984924612~2.jpg', title: 'Vaisuhhhh the Queen', description: 'The absolute queen of beauty and grace, this final photo showcases why Vaisuhhhh truly deserves to be celebrated today and always!' },
+            
+            // Video memories at the end (using WebM format for better compatibility)
+            { 
+                src: 'video/video1.webm', 
+                title: 'Vaisuhhhh\'s💜 Video Memories 1', 
+                description: 'Beautiful moments captured in motion - Vaisuhhhh\'s amazing video memories that bring her personality to life!', 
+                type: 'video' 
+            },
+            { 
+                src: 'video/video2.webm', 
+                title: 'Vaisuhhhh\'s💜 Video Memories 2', 
+                description: 'More incredible video moments showing Vaisuhhhh\'s vibrant energy and beautiful smile in action!', 
+                type: 'video' 
+            },
+            { 
+                src: 'video/video3.webm', 
+                title: 'Vaisuhhhh\'s💜 Video Memories 3', 
+                description: 'The final video collection - capturing Vaisuhhhh\'s most precious moving memories for this special birthday celebration!', 
+                type: 'video' 
+            }
         ];
 
         let currentSlide = 0;
@@ -992,6 +2068,9 @@
         function startBirthdayJourney() {
             console.log('🚀 Starting birthday journey');
             
+            // Initialize audio context on user interaction
+            initAudioContext();
+            
             const stageStart = document.getElementById('stageStart');
             stageStart.classList.add('hidden');
             
@@ -1010,9 +2089,115 @@
         // Make function globally available immediately
         window.startBirthdayJourney = startBirthdayJourney;
 
+        // Web Audio API for countdown sounds
+        let audioContext;
+        let countdownAudioEnabled = false;
+
+        // Initialize audio context
+        function initAudioContext() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                countdownAudioEnabled = true;
+                console.log('🔊 Audio context initialized for countdown sounds');
+            } catch (error) {
+                console.log('Audio context not available:', error);
+                countdownAudioEnabled = false;
+            }
+        }
+
+        // Generate countdown beep sound with fallback
+        function playCountdownBeep(frequency = 800, duration = 0.3) {
+            // Try Web Audio API first
+            if (countdownAudioEnabled && audioContext) {
+                try {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.05);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + duration);
+                    
+                    console.log(`🔊 Playing countdown beep at ${frequency}Hz`);
+                    return;
+                } catch (error) {
+                    console.log('Web Audio API error, trying HTML5 audio fallback:', error);
+                }
+            }
+            
+            // Fallback: Try HTML5 audio elements
+            try {
+                const countdownTick = document.getElementById('countdownTick');
+                if (countdownTick) {
+                    countdownTick.currentTime = 0;
+                    countdownTick.volume = 0.5;
+                    countdownTick.play().catch(e => console.log('HTML5 audio failed:', e));
+                }
+            } catch (error) {
+                console.log('HTML5 audio fallback failed:', error);
+            }
+        }
+
+        // Generate final countdown sound (different tone) with fallback
+        function playFinalCountdownSound() {
+            // Try Web Audio API first
+            if (countdownAudioEnabled && audioContext) {
+                try {
+                    // Create a more dramatic sound for the final "GO!"
+                    const oscillator1 = audioContext.createOscillator();
+                    const oscillator2 = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator1.connect(gainNode);
+                    oscillator2.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    // Two frequency harmony for richer sound
+                    oscillator1.frequency.setValueAtTime(600, audioContext.currentTime);
+                    oscillator2.frequency.setValueAtTime(900, audioContext.currentTime);
+                    oscillator1.type = 'sine';
+                    oscillator2.type = 'triangle';
+                    
+                    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.4, audioContext.currentTime + 0.1);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
+                    
+                    oscillator1.start(audioContext.currentTime);
+                    oscillator2.start(audioContext.currentTime);
+                    oscillator1.stop(audioContext.currentTime + 0.8);
+                    oscillator2.stop(audioContext.currentTime + 0.8);
+                    
+                    console.log('🔊 Playing final countdown sound');
+                    return;
+                } catch (error) {
+                    console.log('Web Audio API error for final sound, trying fallback:', error);
+                }
+            }
+            
+            // Fallback: Try HTML5 audio elements
+            try {
+                const countdownFinal = document.getElementById('countdownFinal');
+                if (countdownFinal) {
+                    countdownFinal.currentTime = 0;
+                    countdownFinal.volume = 0.6;
+                    countdownFinal.play().catch(e => console.log('Final HTML5 audio failed:', e));
+                }
+            } catch (error) {
+                console.log('HTML5 final audio fallback failed:', error);
+            }
+        }
+
         // Show countdown 3, 2, 1
         function showCountdown() {
-            console.log('🕐 Starting countdown');
+            console.log('🕐 Starting countdown with sound effects');
             
             // Create countdown container
             const countdownDiv = document.createElement('div');
@@ -1025,16 +2210,30 @@
                 height: 100vh;
                 background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 z-index: 1000;
                 font-family: 'Dancing Script', cursive;
             `;
             
+            // Add sound indicator
+            const soundIndicator = document.createElement('div');
+            soundIndicator.style.cssText = `
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                color: ${countdownAudioEnabled ? '#C4B5FD' : '#666'};
+                font-size: 1rem;
+                opacity: 0.8;
+            `;
+            soundIndicator.innerHTML = countdownAudioEnabled ? '🔊 Sound ON' : '🔇 Sound OFF';
+            countdownDiv.appendChild(soundIndicator);
+            
             const countdownNumber = document.createElement('div');
             countdownNumber.id = 'countdownNumber';
             countdownNumber.style.cssText = `
-                font-size: 15rem;
+                font-size: ${window.innerWidth <= 768 ? '8rem' : window.innerWidth <= 480 ? '6rem' : '15rem'};
                 font-weight: bold;
                 color: transparent;
                 background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD);
@@ -1056,6 +2255,15 @@
                 countdownNumber.textContent = count;
                 countdownNumber.style.transform = 'scale(1)';
                 
+                // Play countdown sound based on number
+                if (count > 1) {
+                    // Regular countdown beeps for 3 and 2
+                    playCountdownBeep(800 + (count * 100), 0.4);
+                } else {
+                    // Special sound for 1 (final number)
+                    playCountdownBeep(1200, 0.5);
+                }
+                
                 // Create sparkle effect
                 createCountdownSparkles();
                 
@@ -1066,6 +2274,14 @@
                     if (count > 0) {
                         setTimeout(showNumber, 300);
                     } else {
+                        // Play final "GO!" sound
+                        playFinalCountdownSound();
+                        
+                        // Start background music after countdown
+                        setTimeout(() => {
+                            playBackgroundMusic();
+                        }, 800);
+                        
                         // After countdown, start universe stage
                         setTimeout(() => {
                             countdownDiv.remove();
@@ -1270,14 +2486,22 @@
                 };
                 
                 // Add event listener as backup
+                // Add both click and touch support
                 newKnife.addEventListener('click', function(e) {
-                    console.log('🎯 KNIFE EVENT LISTENER TRIGGERED!');
+                    console.log('🎯 KNIFE CLICK EVENT TRIGGERED!');
                     e.preventDefault();
                     e.stopPropagation();
                     cutCake();
                 }, true);
                 
-                // Visual feedback
+                newKnife.addEventListener('touchstart', function(e) {
+                    console.log('🎯 KNIFE TOUCH EVENT TRIGGERED!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cutCake();
+                }, { passive: false });
+                
+                // Visual feedback for desktop
                 newKnife.addEventListener('mouseenter', function() {
                     newKnife.style.background = 'rgba(139, 92, 246, 0.4)';
                     newKnife.style.transform = 'scale(1.05) rotate(5deg)';
@@ -1287,6 +2511,19 @@
                     newKnife.style.background = 'rgba(139, 92, 246, 0.2)';
                     newKnife.style.transform = 'scale(1) rotate(0deg)';
                 });
+                
+                // Touch feedback for mobile
+                newKnife.addEventListener('touchstart', function() {
+                    newKnife.style.background = 'rgba(139, 92, 246, 0.4)';
+                    newKnife.style.transform = 'scale(1.05) rotate(5deg)';
+                }, { passive: true });
+                
+                newKnife.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        newKnife.style.background = 'rgba(139, 92, 246, 0.2)';
+                        newKnife.style.transform = 'scale(1) rotate(0deg)';
+                    }, 100);
+                }, { passive: true });
                 
                 // Make sure it's visible and interactive
                 newKnife.style.pointerEvents = 'auto';
@@ -1314,9 +2551,14 @@
                     console.log('Knife disabled successfully');
                 }
                 
-                // Play birthday song
-                console.log('Playing birthday song...');
-                playBirthdaySong();
+                // Fade out background music and play birthday song
+                console.log('Stopping background music and playing birthday song...');
+                fadeOutBackgroundMusic(1500);
+                
+                // Wait a moment for fade out, then start birthday song
+                setTimeout(() => {
+                    playBirthdaySong();
+                }, 1000);
                 
                 // Show cake cutting effect
                 const cake = document.querySelector('.cake-emoji');
@@ -1401,9 +2643,107 @@
             }
         }
 
-        // Global audio player
+        // Global audio players
         let birthdayAudio = null;
+        let backgroundMusicAudio = null;
         let isAudioEnabled = false;
+        let backgroundMusicEnabled = false;
+
+        // Initialize and play background music (start.mp3)
+        function playBackgroundMusic() {
+            console.log('🎵 Starting background music (start.mp3)');
+            
+            // Show audio control and update status
+            const audioControl = document.getElementById('audioControl');
+            const audioStatus = document.getElementById('audioStatus');
+            if (audioControl && audioStatus) {
+                audioControl.style.display = 'block';
+                audioStatus.textContent = 'Background Music Playing 🎶';
+            }
+            
+            try {
+                if (!backgroundMusicAudio) {
+                    backgroundMusicAudio = document.getElementById('backgroundMusic');
+                    
+                    if (backgroundMusicAudio) {
+                        backgroundMusicAudio.loop = true;
+                        backgroundMusicAudio.volume = 0.4; // Lower volume for background
+                        
+                        backgroundMusicAudio.addEventListener('loadeddata', () => {
+                            console.log('🎵 Background music loaded successfully');
+                        });
+                        
+                        backgroundMusicAudio.addEventListener('error', (e) => {
+                            console.error('🎵 Background music error:', e);
+                            if (audioStatus) audioStatus.textContent = 'Background Music Error';
+                        });
+                        
+                        backgroundMusicAudio.addEventListener('play', () => {
+                            backgroundMusicEnabled = true;
+                            console.log('🎵 Background music started playing');
+                            if (audioStatus) audioStatus.textContent = 'Background Music Playing 🎶';
+                        });
+                        
+                        backgroundMusicAudio.addEventListener('pause', () => {
+                            backgroundMusicEnabled = false;
+                            console.log('🎵 Background music paused');
+                        });
+                    }
+                }
+                
+                if (backgroundMusicAudio) {
+                    backgroundMusicAudio.currentTime = 0;
+                    const playPromise = backgroundMusicAudio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            console.log('🎵 Background music playing successfully');
+                            backgroundMusicEnabled = true;
+                        }).catch(error => {
+                            console.error('🎵 Background music play failed:', error);
+                            if (audioStatus) audioStatus.textContent = 'Click anywhere to enable music';
+                        });
+                    }
+                }
+                
+            } catch (error) {
+                console.error('🎵 Error setting up background music:', error);
+                if (audioStatus) audioStatus.textContent = 'Background Music Not Available';
+            }
+        }
+
+        // Stop background music
+        function stopBackgroundMusic() {
+            if (backgroundMusicAudio && !backgroundMusicAudio.paused) {
+                backgroundMusicAudio.pause();
+                backgroundMusicAudio.currentTime = 0;
+                backgroundMusicEnabled = false;
+                console.log('🎵 Background music stopped');
+            }
+        }
+
+        // Fade out background music
+        function fadeOutBackgroundMusic(duration = 2000) {
+            if (backgroundMusicAudio && !backgroundMusicAudio.paused) {
+                const fadeAudio = backgroundMusicAudio;
+                const originalVolume = fadeAudio.volume;
+                const fadeStep = originalVolume / (duration / 50);
+                
+                const fadeInterval = setInterval(() => {
+                    if (fadeAudio.volume > fadeStep) {
+                        fadeAudio.volume -= fadeStep;
+                    } else {
+                        fadeAudio.volume = 0;
+                        fadeAudio.pause();
+                        fadeAudio.currentTime = 0;
+                        fadeAudio.volume = originalVolume; // Reset for next time
+                        backgroundMusicEnabled = false;
+                        clearInterval(fadeInterval);
+                        console.log('🎵 Background music faded out and stopped');
+                    }
+                }, 50);
+            }
+        }
 
         // Initialize and play happy birthday audio
         function playBirthdaySong() {
@@ -1506,10 +2846,100 @@
             }
         }
 
+        // Handle video loading errors
+        function handleVideoError(videoElement, index) {
+            console.error('🎬 Video failed to load due to codec/metadata issues:', videoElement.src);
+            const slide = videoElement.closest('.slide');
+            const overlay = document.getElementById(`overlay-${index}`);
+            
+            // Hide the video and overlay
+            videoElement.style.display = 'none';
+            if (overlay) overlay.style.display = 'none';
+            
+            // Find the corresponding memory item to get fallback image
+            const videoContainer = videoElement.parentNode;
+            const memoryItem = memoryImages[index];
+            
+            if (memoryItem && memoryItem.fallback) {
+                // Use fallback image
+                console.log('🎬 Using fallback image:', memoryItem.fallback);
+                const fallbackImg = document.createElement('img');
+                fallbackImg.src = memoryItem.fallback;
+                fallbackImg.alt = memoryItem.title;
+                fallbackImg.style.cssText = `
+                    max-width: 100%;
+                    max-height: 70vh;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
+                    background: rgba(0, 0, 0, 0.2);
+                `;
+                fallbackImg.onerror = function() {
+                    console.error('🎬 Fallback image also failed to load');
+                    this.style.display = 'none';
+                };
+                
+                // Add video icon overlay to indicate it was meant to be a video
+                const videoIndicator = document.createElement('div');
+                videoIndicator.innerHTML = '🎬';
+                videoIndicator.style.cssText = `
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    background: rgba(139, 92, 246, 0.9);
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 20px;
+                    font-size: 16px;
+                    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+                    z-index: 5;
+                `;
+                
+                videoContainer.style.position = 'relative';
+                videoContainer.appendChild(fallbackImg);
+                videoContainer.appendChild(videoIndicator);
+            } else {
+                // Create a beautiful placeholder for the failed video
+                const errorDiv = document.createElement('div');
+                errorDiv.innerHTML = `
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        min-height: 300px;
+                        background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(79, 70, 229, 0.1));
+                        border: 2px dashed rgba(139, 92, 246, 0.3);
+                        border-radius: 20px;
+                        padding: 40px;
+                        text-align: center;
+                        color: rgba(255,255,255,0.8);
+                        backdrop-filter: blur(10px);
+                    ">
+                        <div style="font-size: 4em; margin-bottom: 20px;">🎬</div>
+                        <h3 style="color: #8B5CF6; margin-bottom: 15px;">Video Memory</h3>
+                        <p style="margin-bottom: 20px; max-width: 400px;">
+                            This video memory needs to be converted to a web-compatible format.
+                        </p>
+                        <div style="padding: 10px 20px; background: rgba(139, 92, 246, 0.2); border-radius: 25px; font-size: 0.8em;">
+                            💜 Still a beautiful memory 💜
+                        </div>
+                    </div>
+                `;
+                videoContainer.appendChild(errorDiv);
+            }
+        }
+
+        // Pure autoplay mode - no user interaction required
+
         // Start the memories slideshow
         function startSlideshow() {
-            console.log('🎬 Starting slideshow with', memoryImages.length, 'images');
             const container = document.getElementById('slideshowContainer');
+            
+            // Mobile detection
+            const isMobile = window.innerWidth <= 768;
             
             // Clear any existing slides and intervals
             container.innerHTML = '';
@@ -1518,76 +2948,498 @@
             }
             currentSlide = 0;
             
-            // Create slides
+            // Ensure container is properly setup for mobile
+            if (isMobile) {
+                container.style.cssText = `
+                    position: relative !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    overflow: hidden !important;
+                `;
+            }
+            
+            // Array of different transition effects (no rotation to prevent tilted images)
+            const transitionEffects = [
+                'fade-in', 'slide-up', 'slide-down', 'slide-left', 
+                'slide-right', 'zoom-in', 'bounce-in', 'elastic-in'
+            ];
+            
+            // Create slides with random left/right positioning and transition effects
             memoryImages.forEach((image, index) => {
                 const slide = document.createElement('div');
-                slide.className = 'slide';
+                
+                // Randomly choose left or right positioning for image
+                const isImageLeft = Math.random() < 0.5;
+                
+                // Randomly choose a transition effect
+                const randomEffect = transitionEffects[Math.floor(Math.random() * transitionEffects.length)];
+                
+                // Combine classes
+                const positionClass = isImageLeft ? 'left-image' : 'right-image';
+                slide.className = `slide ${positionClass} ${randomEffect}`;
+                
+                // Check if it's a video, video-image, or regular image
+                const isVideo = image.type === 'video';
+                const isVideoImage = image.type === 'video-image';
+                
                 slide.innerHTML = `
-                    <img src="${image.src}" alt="${image.title}" onerror="this.style.display='none';">
-                    <h3 class="slide-title birthday-font">${image.title}</h3>
-                    <p class="slide-description">${image.description}</p>
+                    <div class="slide-image-container" style="position: relative;">
+                        ${isVideo ? 
+                            `<video id="video-${index}" 
+                                   muted 
+                                   autoplay
+                                   playsinline 
+                                   preload="auto"
+                                   onloadeddata="console.log('🎬 Video loaded successfully:', '${image.src}');"
+                                   oncanplay="console.log('🎬 Video can play:', '${image.src}');"
+                                   onended="console.log('🎬 Video ${index} ended naturally');"
+                                   onerror="console.error('❌ Video error:', '${image.src}', event); handleVideoError(this, ${index});"
+                                   onloadstart="console.log('🎬 Video load started:', '${image.src}');">
+                                   <source src="${image.src}" type="video/webm">
+                                   <source src="${image.src.replace('.webm', '.mp4')}" type="video/mp4">
+                                   <p>Your browser doesn't support video playback. Please use a modern browser that supports WebM or MP4 format.</p>
+                             </video>` : 
+                         isVideoImage ?
+                            `<img src="${image.src}" 
+                                  alt="${image.title}" 
+                                  onerror="this.style.display='none'; console.log('Image failed to load:', '${image.src}');" 
+                                  loading="eager">
+                             <div style="
+                                 position: absolute;
+                                 top: 20px;
+                                 right: 20px;
+                                 background: rgba(139, 92, 246, 0.9);
+                                 color: white;
+                                 padding: 8px 12px;
+                                 border-radius: 20px;
+                                 font-size: 16px;
+                                 box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+                                 z-index: 5;
+                             ">🎬</div>` :
+                            `<img src="${image.src}" 
+                                  alt="${image.title}" 
+                                  onerror="this.style.display='none'; console.log('Image failed to load:', '${image.src}');" 
+                                  loading="eager">`
+                        }
+                    </div>
+                    <div class="slide-content">
+                        <h3 class="slide-title birthday-font">${image.title}</h3>
+                        <p class="slide-description">${image.description}</p>
+                    </div>
                 `;
                 container.appendChild(slide);
+            });
+            
+            // Initialize videos for autoplay (no controls, no overlays)
+            memoryImages.forEach((image, index) => {
+                if (image.type === 'video') {
+                    const video = document.getElementById(`video-${index}`);
+                    
+                    if (video) {
+                        // Add detailed logging for video loading
+                        video.addEventListener('loadstart', () => {
+                            console.log(`🎬 Video ${index} load started: ${image.src}`);
+                        });
+                        
+                        video.addEventListener('loadeddata', () => {
+                            console.log(`🎬 Video ${index} data loaded successfully`);
+                        });
+                        
+                        video.addEventListener('canplay', () => {
+                            console.log(`🎬 Video ${index} can play`);
+                        });
+                        
+                        video.addEventListener('error', (e) => {
+                            console.error(`🎬 Video ${index} error:`, e);
+                            if (video.error) {
+                                console.error(`🎬 Video error code: ${video.error.code}, message: ${video.error.message || 'Unknown error'}`);
+                            }
+                        });
+                        
+                        video.addEventListener('play', () => {
+                            console.log(`🎬 Video ${index} started playing automatically`);
+                        });
+                        
+                        video.addEventListener('ended', () => {
+                            console.log(`🎬 Video ${index} ended naturally`);
+                        });
+                        
+                        // Force load the video for better autoplay
+                        video.load();
+                    }
+                }
             });
             
             // Show first slide
             showSlide(0);
             
-            // Auto-advance slides (show each once, then stop)
-            slideInterval = setInterval(() => {
+            // Setup event-based slide progression (videos play fully, images show for set time)
+            setupSlideProgression();
+        }
+
+        // Setup event-based slide progression
+        function setupSlideProgression() {
+            function goToNextSlide() {
                 currentSlide++;
-                
                 if (currentSlide >= memoryImages.length) {
                     // All slides shown, show final message
-                    clearInterval(slideInterval);
                     setTimeout(() => {
                         showFinalMessage();
                     }, 2000);
                 } else {
                     showSlide(currentSlide);
+                    setupCurrentSlideProgression();
                 }
-            }, 5000); // 5 seconds per slide
+            }
+
+            function setupCurrentSlideProgression() {
+                const currentImage = memoryImages[currentSlide];
+                const isVideo = currentImage.type === 'video';
+                
+                if (isVideo) {
+                    // For videos: wait for video to end naturally
+                    const video = document.getElementById(`video-${currentSlide}`);
+                    if (video) {
+                        // Remove any existing listeners to prevent duplicates
+                        video.onended = null;
+                        
+                        // Add listener for when video ends
+                        const handleVideoEnd = () => {
+                            setTimeout(goToNextSlide, 1000); // Small delay before transition
+                        };
+                        
+                        video.addEventListener('ended', handleVideoEnd, { once: true });
+                        
+                        // Also listen for user manually seeking to end
+                        video.addEventListener('seeked', () => {
+                            if (video.currentTime >= video.duration - 0.5) {
+                                handleVideoEnd();
+                            }
+                        });
+                        
+                        // Fallback: if video doesn't play or is very long, add max time limit
+                        setTimeout(() => {
+                            if (currentSlide < memoryImages.length && memoryImages[currentSlide].type === 'video') {
+                                goToNextSlide();
+                            }
+                        }, 30000); // 30 second max for any video
+                        
+                    } else {
+                        setTimeout(goToNextSlide, 6000); // Fallback to timer
+                    }
+                } else {
+                    // For images: show for fixed duration
+                    setTimeout(goToNextSlide, 6000); // 6 seconds for images
+                }
+            }
+
+            // Setup progression for the first slide
+            setupCurrentSlideProgression();
         }
 
-        // Show final birthday message
+        // Show enhanced animated final birthday message
         function showFinalMessage() {
-            const container = document.getElementById('slideshowContainer');
-            container.innerHTML = `
-                <div class="slide active final-slide">
-                    <div class="final-birthday-message">
-                        <h1 class="birthday-font" style="font-size: 4rem; margin-bottom: 30px; background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                            Happy Birthday Vaisuhhhh! 🎉💜
+            // Hide all other stages
+            document.querySelectorAll('.stage-start, .stage-universe, .stage-wishes, .stage-cake, .stage-memories').forEach(stage => {
+                stage.classList.remove('active');
+            });
+            
+            // Show thank you stage
+            const thankYouStage = document.getElementById('stageThankYou');
+            if (thankYouStage) {
+                thankYouStage.classList.add('active');
+                
+                // Create mega celebration after animations complete
+                setTimeout(() => {
+                    createMegaCelebration();
+                }, 5000);
+            }
+            finalSlide.className = 'slide active final-slide animated-final';
+            finalSlide.style.cssText = `
+                display: flex !important;
+                flex-direction: column !important;
+                text-align: center !important;
+                justify-content: center !important;
+                align-items: center !important;
+                padding: 20px !important;
+                opacity: 0 !important;
+                transform: scale(0.3) !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: 9999 !important;
+                background: linear-gradient(135deg, #1a1a2e, #16213e, #0f4c75) !important;
+                animation: finalSlideEntrance 2s ease-out forwards !important;
+                overflow: hidden !important;
+            `;
+            
+            finalSlide.innerHTML = `
+                <div class="final-birthday-content" style="text-align: center; max-width: 90%; margin: 0 auto; position: relative;">
+                    
+                    <!-- Animated Title -->
+                    <div class="title-container" style="margin-bottom: 40px;">
+                        <h1 class="birthday-font final-title" style="
+                            font-size: clamp(3rem, 8vw, 5rem); 
+                            background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD, #E9D5FF, #8B5CF6); 
+                            background-size: 300% 300%;
+                            background-clip: text; 
+                            -webkit-background-clip: text; 
+                            -webkit-text-fill-color: transparent; 
+                            line-height: 1.2;
+                            animation: gradientShift 3s ease-in-out infinite, titleBounce 2s ease-out 0.5s forwards;
+                            transform: translateY(-50px);
+                            opacity: 0;
+                            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+                        ">
+                            🎉 Happy Birthday Vaisuhhhh! 💜
                         </h1>
-                        <p style="font-size: 1.5rem; color: #E9D5FF; margin-bottom: 20px;">
-                            Thank you for being such an amazing and wonderful person!
+                        <div class="sparkles" style="
+                            position: absolute;
+                            top: -20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 2rem;
+                            animation: sparkleFloat 2s ease-in-out infinite alternate;
+                        ">✨ ⭐ ✨ ⭐ ✨</div>
+                    </div>
+                    
+                    <!-- Thank You Messages with Staggered Animation -->
+                    <div class="thank-you-messages" style="margin-bottom: 40px;">
+                        <p class="message-line" style="
+                            font-size: clamp(1.2rem, 3.5vw, 1.8rem); 
+                            color: #E9D5FF; 
+                            margin-bottom: 25px; 
+                            line-height: 1.5;
+                            opacity: 0;
+                            transform: translateX(-100px);
+                            animation: slideInLeft 1s ease-out 1.5s forwards;
+                        ">
+                            💝 Thank you for being absolutely amazing, Vaisuhhhh! 💝
                         </p>
-                        <p style="font-size: 1.2rem; color: #C4B5FD;">
-                            May all your dreams come true this year! ✨🎂🫶🏻
+                        
+                        <p class="message-line" style="
+                            font-size: clamp(1.1rem, 3vw, 1.6rem); 
+                            color: #C4B5FD; 
+                            margin-bottom: 25px;
+                            line-height: 1.5;
+                            opacity: 0;
+                            transform: translateX(100px);
+                            animation: slideInRight 1s ease-out 2s forwards;
+                        ">
+                            🌟 Your kindness, beauty, and wonderful spirit brighten every day! 🌟
                         </p>
-                        <div class="celebration-hearts" style="margin-top: 30px; font-size: 2rem;">
-                            💜 🎉 ✨ 🎂 🫶🏻 💜 🎉 ✨
+                        
+                        <p class="message-line" style="
+                            font-size: clamp(1.1rem, 3vw, 1.6rem); 
+                            color: #A78BFA; 
+                            margin-bottom: 25px;
+                            line-height: 1.5;
+                            opacity: 0;
+                            transform: translateY(50px);
+                            animation: slideInUp 1s ease-out 2.5s forwards;
+                        ">
+                            🎈 May this new year bring you endless happiness, love, and success! 🎈
+                        </p>
+                        
+                        <p class="message-line" style="
+                            font-size: clamp(1.2rem, 3.2vw, 1.7rem); 
+                            color: #DDD6FE; 
+                            margin-bottom: 30px;
+                            line-height: 1.5;
+                            opacity: 0;
+                            transform: scale(0.5);
+                            animation: popIn 1s ease-out 3s forwards;
+                            font-weight: bold;
+                        ">
+                            🎂✨ You deserve all the wonderful things life has to offer! ✨🎂
+                        </p>
+                    </div>
+                    
+                    <!-- Animated Hearts and Celebration -->
+                    <div class="celebration-section" style="margin-top: 30px;">
+                        <div class="celebration-hearts" style="
+                            font-size: clamp(1.8rem, 5vw, 3rem); 
+                            margin-bottom: 20px;
+                            animation: heartPulse 2s ease-in-out infinite alternate, fadeInScale 1s ease-out 3.5s forwards;
+                            opacity: 0;
+                            transform: scale(0);
+                        ">
+                            💜 🎉 ✨ 🎂 🫶🏻 🎈 � 💝 💜
+                        </div>
+                        
+                        <div class="final-wishes" style="
+                            font-size: clamp(1rem, 2.8vw, 1.4rem);
+                            color: #F3E8FF;
+                            animation: glow 2s ease-in-out infinite alternate, slideInUp 1s ease-out 4s forwards;
+                            opacity: 0;
+                            transform: translateY(30px);
+                            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+                        ">
+                            🎊 Wishing you the most magical birthday ever! 🎊<br>
+                            💫 Stay amazing, stay beautiful, stay you! 💫
                         </div>
                     </div>
                 </div>
             `;
             
-            // Create final celebration
+            container.appendChild(finalSlide);
+            
+            // Create mega celebration after animations complete
             setTimeout(() => {
                 createMegaCelebration();
-            }, 1000);
+            }, 5000);
+            
+            console.log('✅ Enhanced animated thank you message displayed');
         }
 
-        // Show specific slide
+        // Show specific slide with enhanced mobile optimization
         function showSlide(index) {
             const slides = document.querySelectorAll('.slide');
+            const isMobile = window.innerWidth <= 768;
+            const isLandscape = window.innerWidth > window.innerHeight && isMobile;
+            
             slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
+                const isActive = i === index;
+                slide.classList.toggle('active', isActive);
+                
+                // Handle video playback (no controls, pure autoplay)
+                const video = slide.querySelector('video');
+                if (video && video.style.display !== 'none') {
+                    if (isActive) {
+                        console.log(`🎬 Attempting to autoplay video: ${video.src}`);
+                        video.currentTime = 0; // Reset to start
+                        
+                        // Force play the video (no user interaction required)
+                        video.play().then(() => {
+                            console.log(`🎬 Video autoplaying successfully: ${video.src}`);
+                        }).catch(error => {
+                            console.log(`🎬 Video autoplay failed: ${error.message}. Retrying...`);
+                            // Retry after a short delay
+                            setTimeout(() => {
+                                video.play().catch(e => console.log('🎬 Video retry failed:', e.message));
+                            }, 500);
+                        });
+                    } else {
+                        // Pause video when slide becomes inactive
+                        video.pause();
+                    }
+                }
+                
+                // Mobile-specific positioning and visibility
+                if (isMobile) {
+                    if (isActive) {
+                        const flexDirection = isLandscape ? 
+                            (slide.classList.contains('right-image') ? 'row-reverse' : 'row') : 
+                            'column';
+                            
+                        slide.style.cssText = `
+                            display: flex !important;
+                            opacity: 1 !important;
+                            z-index: 10 !important;
+                            position: absolute !important;
+                            top: 0 !important;
+                            left: 0 !important;
+                            width: 100vw !important;
+                            height: 100vh !important;
+                            flex-direction: ${flexDirection} !important;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            box-sizing: border-box !important;
+                            overflow: hidden !important;
+                        `;
+                        
+                        // Ensure image container positioning
+                        const imageContainer = slide.querySelector('.slide-image-container');
+                        const content = slide.querySelector('.slide-content');
+                        
+                        if (imageContainer && content) {
+                            if (isLandscape) {
+                                imageContainer.style.cssText = `
+                                    width: 50vw !important;
+                                    height: 100vh !important;
+                                    display: flex !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    order: 1 !important;
+                                    padding: 10px !important;
+                                    box-sizing: border-box !important;
+                                `;
+                                content.style.cssText = `
+                                    width: 50vw !important;
+                                    height: 100vh !important;
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    order: 2 !important;
+                                    padding: 20px 15px !important;
+                                    text-align: center !important;
+                                    box-sizing: border-box !important;
+                                `;
+                            } else {
+                                imageContainer.style.cssText = `
+                                    width: 100vw !important;
+                                    height: 60vh !important;
+                                    display: flex !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    order: 1 !important;
+                                    padding: 0 15px !important;
+                                    box-sizing: border-box !important;
+                                `;
+                                content.style.cssText = `
+                                    width: 100vw !important;
+                                    height: 40vh !important;
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    justify-content: flex-start !important;
+                                    align-items: center !important;
+                                    order: 2 !important;
+                                    padding: 20px !important;
+                                    text-align: center !important;
+                                    box-sizing: border-box !important;
+                                    overflow-y: auto !important;
+                                `;
+                            }
+                        }
+                    } else {
+                        slide.style.cssText = `
+                            display: none !important;
+                            opacity: 0 !important;
+                            z-index: 1 !important;
+                        `;
+                    }
+                }
             });
+            
+            console.log(`📱 Showing slide ${index + 1}, Mobile: ${isMobile}, Landscape: ${isLandscape}`);
         }
 
         // Add celebration animation styles
         const style = document.createElement('style');
         style.textContent = `
+            @keyframes heartPulse {
+                0% { 
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% { 
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }
+            
+            .final-slide {
+                display: flex !important;
+                visibility: visible !important;
+            }
+            
             @keyframes celebrationFloat {
                 0% { 
                     transform: translateY(0) rotate(0deg) scale(0);
