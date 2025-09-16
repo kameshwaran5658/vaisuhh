@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Vaisuhhhh! 💜🎉</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .birthday-font {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+        }
+
+        /* Stage 1: Black Screen with Let's Go Button */
+        .stage-start {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 2s ease;
+        }
+
+        .stage-start.hidden {
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .lets-go-btn {
+            padding: 20px 50px;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: pulseGlow 2s infinite;
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
+        }
+
+        .lets-go-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.9);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 100px rgba(139, 92, 246, 1);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Stage 2: Universe Animation */
+        .stage-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a0933 0%, #000 70%);
+            opacity: 0;
+            z-index: 900;
+            transition: opacity 2s ease;
+        }
+
+        .stage-universe.active {
+            opacity: 1;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: starZoom 4s linear infinite;
+        }
+
+        @keyframes starZoom {
+            0% {
+                transform: scale(0) translateZ(-1000px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20) translateZ(0px);
+                opacity: 0;
+            }
+        }
+
+        .milky-way {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: galaxyExpand 6s ease-out forwards;
+        }
+
+        @keyframes galaxyExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(15) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Stage 3: Birthday Wishes with Photos */
+        .stage-wishes {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(196, 181, 253, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #2d1b69 50%, #1a0a2e 75%, #0a0a0a 100%);
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Sparkle Container */
+        .sparkle-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .wishes-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            text-align: center;
+            margin: 0 0 10px 0;
+            padding: 0 20px;
+            opacity: 0;
+            animation: titleAppear 3s ease-out forwards;
+            background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD, #E9D5FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 50px rgba(139, 92, 246, 0.5);
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        .animated-text {
+            text-align: center;
+            margin: 0 0 15px 0;
+            width: 100%;
+        }
+
+        .text-line {
+            display: block;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            color: #E9D5FF;
+            margin: 8px 10px;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1s ease-out forwards;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .text-line-1 { animation-delay: 2s; }
+        .text-line-2 { 
+            animation-delay: 2.5s; 
+            animation-name: slideInFromRight;
+            transform: translateX(100px);
+        }
+        .text-line-3 { animation-delay: 3s; }
+
+        @keyframes titleAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .photos-grid {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 500px;
+           
+            padding: 0 20px;
+        }
+
+        .photo-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0) rotate(45deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .photo-card:nth-child(1) { 
+            animation: photoRevealSequence 5s ease-in-out forwards;
+            animation-delay: 3s; 
+        }
+        .photo-card:nth-child(2) { 
+            animation: photoRevealSequence 5s ease-in-out forwards;
+            animation-delay: 8s; 
+        }
+        .photo-card:nth-child(3) { 
+            animation: photoRevealSequence 5s ease-in-out forwards;
+            animation-delay: 13s; 
+        }
+
+        @keyframes photoRevealSequence {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(45deg);
+            }
+            15% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            90% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(0.8) rotate(5deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(45deg);
+            }
+        }
+
+
+
+        .photo-frame {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 20px auto;
+        }
+
+        .photo-card img {
+            width: 320px;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 3px solid #8B5CF6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 
+                0 15px 40px rgba(139, 92, 246, 0.4),
+                inset 0 0 15px rgba(139, 92, 246, 0.1);
+            display: block;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 
+                0 30px 80px rgba(139, 92, 246, 0.6),
+                inset 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .photo-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .wish-message {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 30px);
+            transform: translateY(-50%);
+            padding: 18px 30px;
+            background: rgba(139, 92, 246, 0.25);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            max-width: 350px;
+            min-width: 280px;
+            text-align: center;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            white-space: nowrap;
+        }
+
+        .photo-card:nth-child(1) .wish-message {
+            animation: messageSequence 5s ease-in-out forwards;
+            animation-delay: 3s;
+        }
+
+        .photo-card:nth-child(2) .wish-message {
+            animation: messageSequence 5s ease-in-out forwards;
+            animation-delay: 8s;
+        }
+
+        .photo-card:nth-child(3) .wish-message {
+            animation: messageSequence 5s ease-in-out forwards;
+            animation-delay: 13s;
+        }
+
+        @keyframes messageSequence {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%) translateX(20px) scale(0.8);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0px) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50%) translateX(-20px) scale(0.8);
+            }
+        }
+
+        @keyframes messageFloat {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Stage 4: Knife and Cake Animation */
+        .stage-cake {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2d1b69 0%, #1a0933 50%, #0a0a0a 100%);
+            opacity: 0;
+            z-index: 700;
+            transition: opacity 2s ease;
+        }
+
+        .stage-cake.active {
+            opacity: 1;
+        }
+
+        .cake-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .cake-emoji {
+            font-size: 8rem;
+            margin: 20px 0;
+            animation: cakeBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes cakeBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .knife-clickzone {
+            padding: 60px;
+            margin: 40px;
+            border-radius: 30px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 4px dashed rgba(139, 92, 246, 0.6);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 400px;
+            min-height: 300px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: knifeZoneAppear 2s ease-out 2s forwards;
+        }
+
+        .knife-clickzone:hover {
+            background: rgba(139, 92, 246, 0.25);
+            border-color: rgba(139, 92, 246, 0.8);
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.6);
+        }
+
+        .knife {
+            font-size: 4rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(139, 92, 246, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .knife:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: rgba(139, 92, 246, 0.3);
+            border: 3px solid rgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+        }
+
+        .knife:active {
+            transform: scale(1.1) rotate(25deg);
+            background: rgba(139, 92, 246, 0.3);
+        }
+
+        .click-hint {
+            font-size: 1rem;
+            color: #C4B5FD;
+            margin-top: 10px;
+            animation: blinkHint 1.5s infinite;
+            font-weight: bold;
+        }
+
+        @keyframes blinkHint {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        @keyframes knifeZoneAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes knifeAppear {
+            0% {
+                opacity: 0;
+                transform: translateX(-200px) rotate(-45deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        .cut-instruction {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 4s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design for Wishes Stage */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .text-line {
+                font-size: 1.4rem;
+                margin: 10px 0;
+            }
+            
+            .photos-grid {
+                height: 420px;
+                margin: 15px 0;
+            }
+            
+            .photo-frame {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .photo-card img {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .wish-message {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, 10px);
+                max-width: 280px;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+            
+            .wishes-container {
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+            
+            .text-line {
+                font-size: 1.2rem;
+            }
+            
+            .photos-grid {
+                height: 360px;
+            }
+            
+            .photo-frame {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .photo-card img {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .wish-message {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, 10px);
+                max-width: 240px;
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+        }
+
+        @keyframes sparkleFloat {
+            0% { 
+                opacity: 1; 
+                transform: translateY(0) scale(0); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateY(-20px) scale(1); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-40px) scale(0); 
+            }
+        }
+
+        /* Wishes Stage Animations */
+        @keyframes floatUp {
+            0% { 
+                opacity: 0.8; 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateY(-50vh) rotate(180deg); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-100vh) rotate(360deg); 
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5); 
+            }
+        }
+
+        @keyframes particleOrbit {
+            0% { 
+                transform: rotate(0deg) translateX(20px) rotate(0deg); 
+            }
+            100% { 
+                transform: rotate(360deg) translateX(20px) rotate(-360deg); 
+            }
+        }
+
+        /* Stage 5: Memories Slideshow */
+        .stage-memories {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0933 25%, #2d1b69 50%, #1a0933 75%, #0a0a0a 100%);
+            opacity: 0;
+            z-index: 600;
+            transition: opacity 2s ease;
+        }
+
+        .stage-memories.active {
+            opacity: 1;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
+            margin-bottom: 30px;
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #C4B5FD;
+        }
+
+        .slide-description {
+            font-size: 1.2rem;
+            color: #E9D5FF;
+            line-height: 1.6;
+        }
+
+        /* Responsive image sizing for desktop */
+        @media (min-width: 768px) {
+            .photo-card img {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .slide img {
+                max-height: 600px;
+                max-width: 80%;
+            }
+            
+            .slide {
+                padding: 40px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .photo-card img {
+                width: 450px;
+                height: 450px;
+            }
+            
+            .slide img {
+                max-height: 700px;
+                max-width: 70%;
+            }
+        }
+
+        /* Audio Controls */
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 50px;
+            padding: 10px 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .photo-card img { width: 150px; height: 150px; }
+            .cake-emoji { font-size: 6rem; }
+            .knife { font-size: 3rem; }
+            .photos-grid { gap: 30px; }
+        }
+
+        /* Stage Display Control */
+        .stage-universe, .stage-wishes, .stage-cake, .stage-memories {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 800;
+        }
+
+        .stage-universe.active, .stage-wishes.active, .stage-cake.active, .stage-memories.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stage 1: Black Screen with Let's Go Button -->
+    <div class="stage-start" id="stageStart">
+        <button class="lets-go-btn birthday-font" onclick="startBirthdayJourney()">
+            ✨ Let's Go! ✨
+        </button>
+    </div>
+
+    <!-- Stage 2: Universe Animation -->
+    <div class="stage-universe" id="stageUniverse">
+        <div class="stars" id="starsContainer"></div>
+        <div class="milky-way"></div>
+    </div>
+
+    <!-- Stage 3: Birthday Wishes with Photos -->
+    <div class="stage-wishes" id="stageWishes">
+        <!-- Floating Hearts Background -->
+        <div class="floating-hearts"></div>
+        
+        <!-- Sparkle Effects -->
+        <div class="sparkle-container"></div>
+        
+        <!-- Main Content -->
+        <div class="wishes-container">
+            <h1 class="main-title birthday-font">Happy Birthday Vaisuhhhh! 💜</h1>
+            
+          
+            
+            <div class="photos-grid">
+                <div class="photo-card photo-card-1">
+                    <div class="photo-frame">
+                        <img src="v/vai.jpg" alt="Beautiful Vaisuhhhh" onerror="this.style.display='none';">
+                        <div class="photo-glow"></div>
+                        <div class="photo-particles"></div>
+                    </div>
+                    <div class="wish-message">
+                        <span class="wish-icon">💜</span>
+                        <span class="wish-text">You bring joy to everyone around you!</span>
+                        <span class="wish-icon">💜</span>
+                    </div>
+                </div>
+                <div class="photo-card photo-card-2">
+                    <div class="photo-frame">
+                        <img src="v/VAisuhhh2.jpg" alt="Amazing Vaisuhhhh" onerror="this.style.display='none';">
+                        <div class="photo-glow"></div>
+                        <div class="photo-particles"></div>
+                    </div>
+                    <div class="wish-message">
+                        <span class="wish-icon">✨</span>
+                        <span class="wish-text">Your smile lights up the entire world!</span>
+                        <span class="wish-icon">✨</span>
+                    </div>
+                </div>
+                <div class="photo-card photo-card-3">
+                    <div class="photo-frame">
+                        <img src="v/Vaisuhhhh.jpg" alt="Wonderful Vaisuhhhh" onerror="this.style.display='none';">
+                        <div class="photo-glow"></div>
+                        <div class="photo-particles"></div>
+                    </div>
+                    <div class="wish-message">
+                        <span class="wish-icon">🌟</span>
+                        <span class="wish-text">Forever amazing and absolutely wonderful!</span>
+                        <span class="wish-icon">🌟</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Birthday Countdown Effect -->
+            <div class="birthday-countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number">🎂</span>
+                    <span class="countdown-label">Another Amazing Year!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stage 4: Knife and Cake Animation -->
+    <div class="stage-cake" id="stageCake">
+        <div class="cake-container">
+            <h2 class="main-title birthday-font" style="font-size: 4rem; margin-bottom: 30px;">Time to Cut the Cake!</h2>
+            <div class="cake-emoji">🎂</div>
+            
+            <!-- Large clickable area around knife -->
+            <div class="knife-clickzone" onclick="window.cutCake()" title="Click anywhere here to cut the cake!">
+                <div class="knife" id="knifeElement">
+                    🔪
+                    <div class="click-hint">👆 CLICK ANYWHERE HERE!</div>
+                </div>
+            </div>
+            
+            <p class="cut-instruction birthday-font">Click the knife area to cut the cake! 🎉</p>
+        </div>
+    </div>
+
+    <!-- Stage 5: Memories Slideshow -->
+    <div class="stage-memories" id="stageMemories">
+        <div class="slideshow-container" id="slideshowContainer">
+            <!-- Slides will be generated dynamically -->
+        </div>
+    </div>
+
+    <!-- Audio for Happy Birthday Song -->
+    <audio id="birthdaySong" preload="auto">
+        <source src="https://www.soundjay.com/misc/sounds/happy-birthday-song.mp3" type="audio/mpeg">
+        <!-- Fallback: we'll use Web Audio API to generate a simple happy birthday tune -->
+    </audio>
+
+    <!-- Audio Control -->
+    <div class="audio-control" id="audioControl" style="display: none;">
+        <i class="fas fa-volume-up" id="audioIcon"></i>
+        <span id="audioStatus">Music Playing</span>
+    </div>
+
+    <script>
+        // Gallery images with descriptions
+        const memoryImages = [
+            { src: 'vaisuhh-photos/Snapchat-1655543332.jpg', title: 'Vaisuhhhh\'s💜 Snapchat Fun', description: 'Capturing fun moments and memories through creative selfies. Vaisuhhhh always knows how to have a good time!' },
+            { src: 'vaisuhh-photos/IMG_20250111_121039.jpg', title: 'Vaisuhhhh\'s💜 Stylish Moments', description: 'Looking absolutely stunning every day with that natural grace and beauty. Style comes so naturally to Vaisuhhhh!' },
+            { src: 'vaisuhh-photos/Snapchat-1974527526.jpg', title: 'Vaisuhhhh\'s💜 Beautiful Selfie', description: 'Natural beauty captured perfectly, showing her authentic and wonderful personality that shines from within.' },
+            { src: 'vaisuhh-photos/IMG_20250127_120918.jpg', title: 'Vaisuhhhh\'s💜 Recent Memories', description: 'Making new beautiful memories in 2025, each moment more precious than the last. Here\'s to creating many more!' },
+            { src: 'vaisuhh-photos/Snapchat-1244240034.jpg', title: 'Vaisuhhhh\'s💜 Special Moments', description: 'Cherished moments that bring joy and happiness to everyone around. These are the memories we treasure forever.' },
+            { src: 'vaisuhh-photos/Snapchat-589800402.jpg', title: 'Vaisuhhhh\'s💜 Creative Side', description: 'Always finding new ways to express herself creatively. Vaisuhhhh brings art and beauty to every moment.' },
+            { src: 'vaisuhh-photos/IMG_20240827_102853.jpg', title: 'Vaisuhhhh\'s💜 Adventures', description: 'Exploring the world with that beautiful smile, making every place brighter just by being there.' },
+            { src: 'vaisuhh-photos/IMG-20220613-WA0009.jpg', title: 'Vaisuhhhh\'s💜 Vintage Vibes', description: 'Timeless beauty that never goes out of style. Some moments from 2022 that captured Vaisuhhhh\'s classic charm.' },
+            { src: 'vaisuhh-photos/Screenshot_20220917_000445.jpg', title: 'Vaisuhhhh\'s💜 Digital Memories', description: 'Capturing moments in the digital age with screenshots and fun edits. Technology meets Vaisuhhhh\'s creativity!' },
+            { src: 'vaisuhh-photos/Snapchat-1746931653.jpg', title: 'Vaisuhhhh\'s💜 Creative Magic', description: 'Always creating something beautiful and magical with filters and effects. Vaisuhhhh\'s artistic side shines through!' },
+            { src: 'vaisuhh-photos/IMG-20250124-WA0042.jpg', title: 'Vaisuhhhh\'s💜 2025 Moments', description: 'Starting the new year with beautiful memories and exciting adventures. Here\'s to making 2025 the best year yet!' },
+            { src: 'vaisuhh-photos/IMG_20230323_135301.jpg', title: 'Vaisuhhhh\'s💜 Spring Vibes', description: 'Beautiful spring moments from March 2023, when Vaisuhhhh embraced the season of renewal and growth with her radiant energy.' },
+            { src: 'vaisuhh-photos/IMG_20230705_163438.jpg', title: 'Vaisuhhhh\'s💜 Summer Glow', description: 'Radiant summer moments from July 2023, showcasing Vaisuhhhh\'s natural glow and vibrant personality during the sunny season.' },
+            { src: 'vaisuhh-photos/IMG_20250111_121215.jpg', title: 'Vaisuhhhh\'s💜 New Year Portrait', description: 'Starting 2025 with elegance and beauty, this portrait captures Vaisuhhhh\'s grace as she welcomed the new year with style.' },
+            { src: 'vaisuhh-photos/IMG_20250127_190957.jpg', title: 'Vaisuhhhh\'s💜 Evening Elegance', description: 'Beautiful evening moments in 2025, where Vaisuhhhh\'s elegance shines through in the gentle twilight hours.' },
+            { src: 'vaisuhh-photos/IMG_20250405_132245.jpg', title: 'Vaisuhhhh\'s💜 Spring Day', description: 'Blossoming beauty in April 2025, capturing Vaisuhhhh during a perfect spring day filled with warmth and joy.' },
+            { src: 'vaisuhh-photos/RECAP_exported_16533.jpg', title: 'Vaisuhhhh\'s💜 Year Recap', description: 'A special compilation of amazing moments, bringing together the highlights of Vaisuhhhh\'s incredible journey through the year.' },
+            { src: 'vaisuhh-photos/Snapchat-115020311.jpg', title: 'Vaisuhhhh\'s💜 Creative Snaps', description: 'More creative Snapchat moments showcasing Vaisuhhhh\'s fun and playful side with artistic filters and effects.' },
+            { src: 'vaisuhh-photos/Snapchat-1277222546.jpg', title: 'Vaisuhhhh\'s💜 Sparkles', description: 'Sparkling personality shining through every photo, Vaisuhhhh brings light and joy to every moment she captures.' },
+            { src: 'vaisuhh-photos/Snapchat-1294605687.jpg', title: 'Vaisuhhhh\'s💜 Colorful World', description: 'Bringing color to every moment, Vaisuhhhh\'s vibrant personality makes even ordinary days extraordinary and beautiful.' },
+            { src: 'vaisuhh-photos/Snapchat-1481488708.jpg', title: 'Vaisuhhhh\'s💜 Adorable Side', description: 'Absolutely adorable in every way, this photo captures the sweet and lovable nature that makes Vaisuhhhh so special.' },
+            { src: 'vaisuhh-photos/Snapchat-1589774218.jpg', title: 'Vaisuhhhh\'s💜 Fire Looks', description: 'Looking absolutely fire in every shot, Vaisuhhhh\'s confidence and beauty are undeniable in this stunning capture.' },
+            { src: 'vaisuhh-photos/Snapchat-2136970077.jpg', title: 'Vaisuhhhh\'s💜 Fresh Vibes', description: 'Fresh and vibrant energy always radiates from Vaisuhhhh, bringing a breath of fresh air to every photo and moment.' },
+            { src: 'vaisuhh-photos/Snapchat-457702673.jpg', title: 'Vaisuhhhh\'s💜 Dreamy Looks', description: 'Looking dreamy and ethereal, this photo captures Vaisuhhhh\'s otherworldly beauty and gentle, captivating presence.' },
+            { src: 'vaisuhh-photos/Snapchat-554945129.jpg', title: 'Vaisuhhhh\'s💜 Grace', description: 'Graceful like a beautiful butterfly, Vaisuhhhh moves through life with elegance and poise that inspires everyone around her.' },
+            { src: 'vaisuhh-photos/Snapchat-984924612~2.jpg', title: 'Vaisuhhhh the Queen', description: 'The absolute queen of beauty and grace, this final photo showcases why Vaisuhhhh truly deserves to be celebrated today and always!' }
+        ];
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Create stars animation
+        function createStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 4 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Start the birthday journey
+        function startBirthdayJourney() {
+            console.log('🚀 Starting birthday journey');
+            
+            const stageStart = document.getElementById('stageStart');
+            stageStart.classList.add('hidden');
+            
+            // Show countdown after button disappears
+            setTimeout(() => {
+                showCountdown();
+            }, 1000);
+            
+            // Completely remove the start stage after transition
+            setTimeout(() => {
+                stageStart.style.display = 'none';
+                stageStart.remove();
+            }, 2500);
+        }
+
+        // Make function globally available immediately
+        window.startBirthdayJourney = startBirthdayJourney;
+
+        // Show countdown 3, 2, 1
+        function showCountdown() {
+            console.log('🕐 Starting countdown');
+            
+            // Create countdown container
+            const countdownDiv = document.createElement('div');
+            countdownDiv.id = 'countdownStage';
+            countdownDiv.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                font-family: 'Dancing Script', cursive;
+            `;
+            
+            const countdownNumber = document.createElement('div');
+            countdownNumber.id = 'countdownNumber';
+            countdownNumber.style.cssText = `
+                font-size: 15rem;
+                font-weight: bold;
+                color: transparent;
+                background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-align: center;
+                transform: scale(0);
+                transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                text-shadow: 0 0 50px rgba(139, 92, 246, 0.5);
+            `;
+            
+            countdownDiv.appendChild(countdownNumber);
+            document.body.appendChild(countdownDiv);
+            
+            let count = 3;
+            
+            function showNumber() {
+                countdownNumber.textContent = count;
+                countdownNumber.style.transform = 'scale(1)';
+                
+                // Create sparkle effect
+                createCountdownSparkles();
+                
+                setTimeout(() => {
+                    countdownNumber.style.transform = 'scale(0)';
+                    count--;
+                    
+                    if (count > 0) {
+                        setTimeout(showNumber, 300);
+                    } else {
+                        // After countdown, start universe stage
+                        setTimeout(() => {
+                            countdownDiv.remove();
+                            document.getElementById('stageUniverse').style.display = 'block';
+                            document.getElementById('stageUniverse').classList.add('active');
+                            createStars();
+                            
+                            // Continue the birthday journey after universe
+                            continueJourney();
+                        }, 500);
+                    }
+                }, 700);
+            }
+            
+            // Start countdown
+            setTimeout(showNumber, 200);
+        }
+
+        // Create sparkle effects for countdown
+        function createCountdownSparkles() {
+            const colors = ['#8B5CF6', '#A78BFA', '#C4B5FD', '#E9D5FF'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}vh;
+                        left: ${Math.random() * 100}vw;
+                        animation: sparkleFloat 1.5s ease-out forwards;
+                        pointer-events: none;
+                        z-index: 1001;
+                        box-shadow: 0 0 10px currentColor;
+                    `;
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 20);
+            }
+        }
+
+        // Create wishes stage effects
+        function createWishesEffects() {
+            console.log('🎉 Creating wishes stage effects');
+            
+            // Create floating hearts
+            createFloatingHearts();
+            
+            // Create sparkle effects
+            createWishesSparkles();
+            
+            // Add photo particle effects
+            setTimeout(() => {
+                createPhotoParticles();
+            }, 3000);
+        }
+
+        // Create floating hearts background
+        function createFloatingHearts() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            if (!heartsContainer) return;
+            
+            const heartSymbols = ['💜', '💖', '💕', '✨', '🌟', '💫'];
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.cssText = `
+                        position: absolute;
+                        font-size: ${Math.random() * 20 + 15}px;
+                        left: ${Math.random() * 100}%;
+                        top: 100%;
+                        animation: floatUp ${Math.random() * 2 + 3}s linear infinite;
+                        animation-delay: ${Math.random() * 1}s;
+                        pointer-events: none;
+                        opacity: 0.8;
+                    `;
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 200);
+            }
+        }
+
+        // Create sparkles for wishes stage
+        function createWishesSparkles() {
+            const sparkleContainer = document.querySelector('.sparkle-container');
+            if (!sparkleContainer) return;
+            
+            const colors = ['#8B5CF6', '#A78BFA', '#C4B5FD', '#E9D5FF', '#F3E8FF'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.cssText = `
+                        position: absolute;
+                        width: ${Math.random() * 6 + 2}px;
+                        height: ${Math.random() * 6 + 2}px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}%;
+                        left: ${Math.random() * 100}%;
+                        animation: twinkle ${Math.random() * 1.5 + 1}s ease-in-out infinite;
+                        animation-delay: ${Math.random() * 1}s;
+                        pointer-events: none;
+                        box-shadow: 0 0 ${Math.random() * 10 + 5}px currentColor;
+                    `;
+                    sparkleContainer.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 5000);
+                }, i * 80);
+            }
+        }
+
+        // Create particle effects around photos
+        function createPhotoParticles() {
+            const photoCards = document.querySelectorAll('.photo-card');
+            
+            photoCards.forEach((card, index) => {
+                const particlesContainer = card.querySelector('.photo-particles');
+                if (!particlesContainer) return;
+                
+                setTimeout(() => {
+                    for (let i = 0; i < 8; i++) {
+                        const particle = document.createElement('div');
+                        particle.style.cssText = `
+                            position: absolute;
+                            width: 4px;
+                            height: 4px;
+                            background: #8B5CF6;
+                            border-radius: 50%;
+                            top: ${Math.random() * 100}%;
+                            left: ${Math.random() * 100}%;
+                            animation: particleOrbit 3s linear infinite;
+                            animation-delay: ${i * 0.2}s;
+                            pointer-events: none;
+                        `;
+                        particlesContainer.appendChild(particle);
+                    }
+                }, index * 500);
+            });
+        }
+
+        // Continue the birthday journey after countdown and universe
+        function continueJourney() {
+            setTimeout(() => {
+                const universeStage = document.getElementById('stageUniverse');
+                universeStage.classList.remove('active');
+                setTimeout(() => {
+                    universeStage.style.display = 'none';
+                }, 2000);
+                
+                document.getElementById('stageWishes').style.display = 'block';
+                document.getElementById('stageWishes').classList.add('active');
+                
+                // Start wishes stage effects
+                createWishesEffects();
+            }, 8000);
+
+            setTimeout(() => {
+                const wishesStage = document.getElementById('stageWishes');
+                wishesStage.classList.remove('active');
+                setTimeout(() => {
+                    wishesStage.style.display = 'none';
+                }, 2000);
+                
+                const cakeStage = document.getElementById('stageCake');
+                cakeStage.style.display = 'block';
+                cakeStage.classList.add('active');
+                cakeStage.style.zIndex = '1000'; // Ensure it's on top
+                
+                console.log('Cake stage activated, setting up knife...');
+                
+                // Set up knife click listener after cake stage is active
+                setTimeout(() => {
+                    setupKnifeListener();
+                }, 3000); // Wait for knife to appear
+            }, 25000); // 25 seconds - after all photos and messages complete
+        }
+
+        // Setup knife click listener
+        function setupKnifeListener() {
+            const knife = document.getElementById('knifeElement');
+            if (knife) {
+                console.log('🔪 Setting up knife listener...');
+                
+                // Remove any existing listeners
+                knife.replaceWith(knife.cloneNode(true));
+                const newKnife = document.getElementById('knifeElement');
+                
+                // Add a very simple click handler
+                newKnife.onclick = function(e) {
+                    console.log('🎯 KNIFE ONCLICK TRIGGERED!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cutCake();
+                };
+                
+                // Add event listener as backup
+                newKnife.addEventListener('click', function(e) {
+                    console.log('🎯 KNIFE EVENT LISTENER TRIGGERED!');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cutCake();
+                }, true);
+                
+                // Visual feedback
+                newKnife.addEventListener('mouseenter', function() {
+                    newKnife.style.background = 'rgba(139, 92, 246, 0.4)';
+                    newKnife.style.transform = 'scale(1.05) rotate(5deg)';
+                });
+                
+                newKnife.addEventListener('mouseleave', function() {
+                    newKnife.style.background = 'rgba(139, 92, 246, 0.2)';
+                    newKnife.style.transform = 'scale(1) rotate(0deg)';
+                });
+                
+                // Make sure it's visible and interactive
+                newKnife.style.pointerEvents = 'auto';
+                newKnife.style.zIndex = '9999';
+                
+                console.log('✅ Knife listener set up successfully!');
+            } else {
+                console.error('❌ Knife element not found!');
+                // Retry after a short delay
+                setTimeout(setupKnifeListener, 500);
+            }
+        }
+
+        // Cut the cake and start memories
+        function cutCake() {
+            console.log('🎂 CAKE CUTTING FUNCTION CALLED! 🎂');
+            
+            try {
+                // Disable the knife to prevent multiple clicks
+                const knife = document.getElementById('knifeElement');
+                if (knife) {
+                    knife.style.pointerEvents = 'none';
+                    knife.style.opacity = '0.5';
+                    knife.style.transform = 'scale(1.2) rotate(45deg)';
+                    console.log('Knife disabled successfully');
+                }
+                
+                // Play birthday song
+                console.log('Playing birthday song...');
+                playBirthdaySong();
+                
+                // Show cake cutting effect
+                const cake = document.querySelector('.cake-emoji');
+                if (cake) {
+                    cake.style.animation = 'none';
+                    cake.innerHTML = '🍰🎉✨';
+                    cake.style.transform = 'scale(1.5)';
+                    cake.style.filter = 'brightness(1.3) contrast(1.1)';
+                    console.log('Cake transformation applied');
+                }
+                
+                // Update instruction text
+                const instruction = document.querySelector('.cut-instruction');
+                if (instruction) {
+                    instruction.innerHTML = '🎉✨ CAKE CUT SUCCESSFULLY! CELEBRATING... ✨🎉';
+                    instruction.style.color = '#C4B5FD';
+                    instruction.style.fontSize = '2.5rem';
+                    instruction.style.textShadow = '0 0 20px rgba(196, 181, 253, 0.8)';
+                    console.log('Instruction updated');
+                }
+                
+                // Create massive celebration
+                console.log('Creating celebration particles...');
+                createMegaCelebration();
+                
+                // Add extra celebration effects
+                setTimeout(() => {
+                    createMegaCelebration();
+                }, 1000);
+                
+                setTimeout(() => {
+                    createMegaCelebration();
+                }, 2000);
+                
+                setTimeout(() => {
+                    console.log('Starting memories slideshow...');
+                    const cakeStage = document.getElementById('stageCake');
+                    const memoryStage = document.getElementById('stageMemories');
+                    
+                    if (cakeStage && memoryStage) {
+                        cakeStage.classList.remove('active');
+                        memoryStage.style.display = 'block';
+                        memoryStage.classList.add('active');
+                        startSlideshow();
+                    }
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Error in cutCake function:', error);
+            }
+        }
+
+        // Enhanced celebration function
+        function createMegaCelebration() {
+            const colors = ['#8B5CF6', '#A78BFA', '#C4B5FD', '#E9D5FF', '#F3E8FF', '#FFD700', '#FF69B4'];
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.top = (Math.random() * 50 + 25) + '%';
+                    particle.style.left = (Math.random() * 80 + 10) + '%';
+                    particle.style.width = (Math.random() * 15 + 8) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '0%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '9999';
+                    particle.style.opacity = Math.random() * 0.8 + 0.2;
+                    particle.style.boxShadow = `0 0 20px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                    
+                    const animationDuration = Math.random() * 4 + 3;
+                    particle.style.animation = `celebrationFloat ${animationDuration}s ease-out forwards`;
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, animationDuration * 1000);
+                }, i * 15);
+            }
+        }
+
+        // Global audio player
+        let birthdayAudio = null;
+        let isAudioEnabled = false;
+
+        // Initialize and play happy birthday audio
+        function playBirthdaySong() {
+            console.log('🎵 Playing Happy Birthday audio file (looping)');
+            document.getElementById('audioControl').style.display = 'block';
+            document.getElementById('audioStatus').textContent = 'Happy Birthday Song Playing 🔄🎵';
+            
+            try {
+                // Create audio element if it doesn't exist
+                if (!birthdayAudio) {
+                    birthdayAudio = new Audio('hb.mp3');
+                    birthdayAudio.loop = true;  // Enable continuous looping
+                    birthdayAudio.volume = 0.7;
+                    
+                    // Add event listeners
+                    birthdayAudio.addEventListener('loadeddata', () => {
+                        console.log('🎵 Audio loaded successfully');
+                    });
+                    
+                    birthdayAudio.addEventListener('error', (e) => {
+                        console.error('🎵 Audio error:', e);
+                        document.getElementById('audioStatus').textContent = 'Audio Error';
+                    });
+                    
+                    birthdayAudio.addEventListener('ended', () => {
+                        console.log('🎵 Happy Birthday song loop completed');
+                        // Since loop=true, this will rarely trigger, but keeping for completeness
+                    });
+                    
+                    birthdayAudio.addEventListener('play', () => {
+                        document.getElementById('audioIcon').className = 'fas fa-volume-up';
+                        document.getElementById('audioStatus').textContent = 'Happy Birthday Song Playing 🔄🎵';
+                    });
+                    
+                    birthdayAudio.addEventListener('pause', () => {
+                        document.getElementById('audioIcon').className = 'fas fa-volume-mute';
+                        document.getElementById('audioStatus').textContent = 'Audio Paused';
+                    });
+                }
+                
+                // Reset and play the audio
+                birthdayAudio.currentTime = 0;
+                
+                const playPromise = birthdayAudio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('🎵 Happy Birthday audio playing successfully');
+                        isAudioEnabled = true;
+                    }).catch(error => {
+                        console.error('🎵 Audio play failed:', error);
+                        document.getElementById('audioStatus').textContent = 'Click anywhere to enable audio';
+                        // Fallback - try to enable audio on next user interaction
+                        document.addEventListener('click', () => {
+                            birthdayAudio.play().catch(e => console.log('Audio still blocked'));
+                        }, { once: true });
+                    });
+                }
+                
+            } catch (error) {
+                console.error('🎵 Error setting up audio:', error);
+                document.getElementById('audioStatus').textContent = 'Audio Not Available';
+            }
+        }
+        
+        // Stop the birthday song
+        function stopBirthdaySong() {
+            if (birthdayAudio && !birthdayAudio.paused) {
+                birthdayAudio.pause();
+                birthdayAudio.currentTime = 0;
+                console.log('🎵 Birthday song stopped');
+            }
+        }
+
+        // Create celebration particles
+        function createCelebration() {
+            const colors = ['#8B5CF6', '#A78BFA', '#C4B5FD', '#E9D5FF', '#F3E8FF'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.width = Math.random() * 10 + 5 + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '9999';
+                    particle.style.animation = 'celebrationFloat 3s ease-out forwards';
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 3000);
+                }, i * 20);
+            }
+        }
+
+        // Start the memories slideshow
+        function startSlideshow() {
+            console.log('🎬 Starting slideshow with', memoryImages.length, 'images');
+            const container = document.getElementById('slideshowContainer');
+            
+            // Clear any existing slides and intervals
+            container.innerHTML = '';
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
+            currentSlide = 0;
+            
+            // Create slides
+            memoryImages.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <img src="${image.src}" alt="${image.title}" onerror="this.style.display='none';">
+                    <h3 class="slide-title birthday-font">${image.title}</h3>
+                    <p class="slide-description">${image.description}</p>
+                `;
+                container.appendChild(slide);
+            });
+            
+            // Show first slide
+            showSlide(0);
+            
+            // Auto-advance slides (show each once, then stop)
+            slideInterval = setInterval(() => {
+                currentSlide++;
+                
+                if (currentSlide >= memoryImages.length) {
+                    // All slides shown, show final message
+                    clearInterval(slideInterval);
+                    setTimeout(() => {
+                        showFinalMessage();
+                    }, 2000);
+                } else {
+                    showSlide(currentSlide);
+                }
+            }, 5000); // 5 seconds per slide
+        }
+
+        // Show final birthday message
+        function showFinalMessage() {
+            const container = document.getElementById('slideshowContainer');
+            container.innerHTML = `
+                <div class="slide active final-slide">
+                    <div class="final-birthday-message">
+                        <h1 class="birthday-font" style="font-size: 4rem; margin-bottom: 30px; background: linear-gradient(45deg, #8B5CF6, #A78BFA, #C4B5FD); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                            Happy Birthday Vaisuhhhh! 🎉💜
+                        </h1>
+                        <p style="font-size: 1.5rem; color: #E9D5FF; margin-bottom: 20px;">
+                            Thank you for being such an amazing and wonderful person!
+                        </p>
+                        <p style="font-size: 1.2rem; color: #C4B5FD;">
+                            May all your dreams come true this year! ✨🎂🫶🏻
+                        </p>
+                        <div class="celebration-hearts" style="margin-top: 30px; font-size: 2rem;">
+                            💜 🎉 ✨ 🎂 🫶🏻 💜 🎉 ✨
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Create final celebration
+            setTimeout(() => {
+                createMegaCelebration();
+            }, 1000);
+        }
+
+        // Show specific slide
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        // Add celebration animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes celebrationFloat {
+                0% { 
+                    transform: translateY(0) rotate(0deg) scale(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateY(-20px) rotate(45deg) scale(1);
+                }
+                90% {
+                    opacity: 0.8;
+                    transform: translateY(-200px) rotate(315deg) scale(1.2);
+                }
+                100% { 
+                    transform: translateY(-300px) rotate(360deg) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize cursor effect (only for non-interactive elements)
+        document.addEventListener('mousemove', (e) => {
+            // Only hide cursor if not over clickable elements
+            const target = e.target;
+            if (!target.classList.contains('knife') && !target.classList.contains('lets-go-btn')) {
+                document.body.style.cursor = 'none';
+                
+                // Create cursor trail
+                const trail = document.createElement('div');
+                trail.style.position = 'fixed';
+                trail.style.top = e.clientY + 'px';
+                trail.style.left = e.clientX + 'px';
+                trail.style.width = '8px';
+                trail.style.height = '8px';
+                trail.style.background = 'rgba(139, 92, 246, 0.4)';
+                trail.style.borderRadius = '50%';
+                trail.style.pointerEvents = 'none';
+                trail.style.zIndex = '9999';
+                trail.style.animation = 'trailFade 0.8s ease-out forwards';
+                
+                document.body.appendChild(trail);
+                
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.parentNode.removeChild(trail);
+                    }
+                }, 800);
+            } else {
+                document.body.style.cursor = 'pointer';
+            }
+        });
+
+        // Add trail fade animation
+        const trailStyle = document.createElement('style');
+        trailStyle.textContent = `
+            @keyframes trailFade {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(trailStyle);
+
+        // Make cutCake function globally available
+        window.cutCake = cutCake;
+        
+        // Debug: Add window click listener as ultimate fallback
+        window.addEventListener('click', function(e) {
+            console.log('Window click detected at:', e.target);
+            console.log('Current active stage:', document.querySelector('.stage-cake.active') ? 'CAKE STAGE' : 'OTHER STAGE');
+            
+            // Check if cake stage is active
+            const cakeStage = document.getElementById('stageCake');
+            const isKnifeClickable = cakeStage && cakeStage.classList.contains('active');
+            
+            if (isKnifeClickable && e.target && (e.target.classList.contains('knife') || e.target.closest('.knife') || e.target.id === 'knifeElement')) {
+                console.log('✅ KNIFE CLICKED! Cake stage is active, calling cutCake...');
+                e.preventDefault();
+                e.stopPropagation();
+                cutCake();
+            } else if (e.target && (e.target.classList.contains('knife') || e.target.closest('.knife'))) {
+                console.log('❌ Knife clicked but cake stage not active yet');
+            }
+        });
+    </script>
+</body>
+</html>
