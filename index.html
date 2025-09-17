@@ -1997,54 +1997,39 @@
 
     <script>
         // Gallery images with descriptions
-        const memoryImages = [
-            { src: 'vaisuhh-photos/Snapchat-1655543332.jpg', title: 'Vaisuhhhh\'s💜 Snapchat Fun', description: 'Capturing fun moments and memories through creative selfies. Vaisuhhhh always knows how to have a good time!' },
-            { src: 'vaisuhh-photos/IMG_20250111_121039.jpg', title: 'Vaisuhhhh\'s💜 Stylish Moments', description: 'Looking absolutely stunning every day with that natural grace and beauty. Style comes so naturally to Vaisuhhhh!' },
-            { src: 'vaisuhh-photos/Snapchat-1974527526.jpg', title: 'Vaisuhhhh\'s💜 Beautiful Selfie', description: 'Natural beauty captured perfectly, showing her authentic and wonderful personality that shines from within.' },
-            { src: 'vaisuhh-photos/IMG_20250127_120918.jpg', title: 'Vaisuhhhh\'s💜 Recent Memories', description: 'Making new beautiful memories in 2025, each moment more precious than the last. Here\'s to creating many more!' },
-            { src: 'vaisuhh-photos/Snapchat-1244240034.jpg', title: 'Vaisuhhhh\'s💜 Special Moments', description: 'Cherished moments that bring joy and happiness to everyone around. These are the memories we treasure forever.' },
-            { src: 'vaisuhh-photos/Snapchat-589800402.jpg', title: 'Vaisuhhhh\'s💜 Creative Side', description: 'Always finding new ways to express herself creatively. Vaisuhhhh brings art and beauty to every moment.' },
-            { src: 'vaisuhh-photos/IMG_20240827_102853.jpg', title: 'Vaisuhhhh\'s💜 Adventures', description: 'Exploring the world with that beautiful smile, making every place brighter just by being there.' },
-            { src: 'vaisuhh-photos/IMG-20220613-WA0009.jpg', title: 'Vaisuhhhh\'s💜 Vintage Vibes', description: 'Timeless beauty that never goes out of style. Some moments from 2022 that captured Vaisuhhhh\'s classic charm.' },
-            { src: 'vaisuhh-photos/Screenshot_20220917_000445.jpg', title: 'Vaisuhhhh\'s💜 Digital Memories', description: 'Capturing moments in the digital age with screenshots and fun edits. Technology meets Vaisuhhhh\'s creativity!' },
-            { src: 'vaisuhh-photos/Snapchat-1746931653.jpg', title: 'Vaisuhhhh\'s💜 Creative Magic', description: 'Always creating something beautiful and magical with filters and effects. Vaisuhhhh\'s artistic side shines through!' },
-            { src: 'vaisuhh-photos/IMG-20250124-WA0042.jpg', title: 'Vaisuhhhh\'s💜 2025 Moments', description: 'Starting the new year with beautiful memories and exciting adventures. Here\'s to making 2025 the best year yet!' },
-            { src: 'vaisuhh-photos/IMG_20230323_135301.jpg', title: 'Vaisuhhhh\'s💜 Spring Vibes', description: 'Beautiful spring moments from March 2023, when Vaisuhhhh embraced the season of renewal and growth with her radiant energy.' },
-            { src: 'vaisuhh-photos/IMG_20230705_163438.jpg', title: 'Vaisuhhhh\'s💜 Summer Glow', description: 'Radiant summer moments from July 2023, showcasing Vaisuhhhh\'s natural glow and vibrant personality during the sunny season.' },
-            { src: 'vaisuhh-photos/IMG_20250111_121215.jpg', title: 'Vaisuhhhh\'s💜 New Year Portrait', description: 'Starting 2025 with elegance and beauty, this portrait captures Vaisuhhhh\'s grace as she welcomed the new year with style.' },
-            { src: 'vaisuhh-photos/IMG_20250127_190957.jpg', title: 'Vaisuhhhh\'s💜 Evening Elegance', description: 'Beautiful evening moments in 2025, where Vaisuhhhh\'s elegance shines through in the gentle twilight hours.' },
-            { src: 'vaisuhh-photos/IMG_20250405_132245.jpg', title: 'Vaisuhhhh\'s💜 Spring Day', description: 'Blossoming beauty in April 2025, capturing Vaisuhhhh during a perfect spring day filled with warmth and joy.' },
-            { src: 'vaisuhh-photos/RECAP_exported_16533.jpg', title: 'Vaisuhhhh\'s💜 Year Recap', description: 'A special compilation of amazing moments, bringing together the highlights of Vaisuhhhh\'s incredible journey through the year.' },
-            { src: 'vaisuhh-photos/Snapchat-115020311.jpg', title: 'Vaisuhhhh\'s💜 Creative Snaps', description: 'More creative Snapchat moments showcasing Vaisuhhhh\'s fun and playful side with artistic filters and effects.' },
-            { src: 'vaisuhh-photos/Snapchat-1277222546.jpg', title: 'Vaisuhhhh\'s💜 Sparkles', description: 'Sparkling personality shining through every photo, Vaisuhhhh brings light and joy to every moment she captures.' },
-            { src: 'vaisuhh-photos/Snapchat-1294605687.jpg', title: 'Vaisuhhhh\'s💜 Colorful World', description: 'Bringing color to every moment, Vaisuhhhh\'s vibrant personality makes even ordinary days extraordinary and beautiful.' },
-            { src: 'vaisuhh-photos/Snapchat-1481488708.jpg', title: 'Vaisuhhhh\'s💜 Adorable Side', description: 'Absolutely adorable in every way, this photo captures the sweet and lovable nature that makes Vaisuhhhh so special.' },
-            { src: 'vaisuhh-photos/Snapchat-1589774218.jpg', title: 'Vaisuhhhh\'s💜 Fire Looks', description: 'Looking absolutely fire in every shot, Vaisuhhhh\'s confidence and beauty are undeniable in this stunning capture.' },
-            { src: 'vaisuhh-photos/Snapchat-2136970077.jpg', title: 'Vaisuhhhh\'s💜 Fresh Vibes', description: 'Fresh and vibrant energy always radiates from Vaisuhhhh, bringing a breath of fresh air to every photo and moment.' },
-            { src: 'vaisuhh-photos/Snapchat-457702673.jpg', title: 'Vaisuhhhh\'s💜 Dreamy Looks', description: 'Looking dreamy and ethereal, this photo captures Vaisuhhhh\'s otherworldly beauty and gentle, captivating presence.' },
-            { src: 'vaisuhh-photos/Snapchat-554945129.jpg', title: 'Vaisuhhhh\'s💜 Grace', description: 'Graceful like a beautiful butterfly, Vaisuhhhh moves through life with elegance and poise that inspires everyone around her.' },
-            { src: 'vaisuhh-photos/Snapchat-984924612~2.jpg', title: 'Vaisuhhhh the Queen', description: 'The absolute queen of beauty and grace, this final photo showcases why Vaisuhhhh truly deserves to be celebrated today and always!' },
-            
-            // Video memories at the end (using WebM format for better compatibility)
-            { 
-                src: 'video/video1.webm', 
-                title: 'Vaisuhhhh\'s💜 Video Memories 1', 
-                description: 'Beautiful moments captured in motion - Vaisuhhhh\'s amazing video memories that bring her personality to life!', 
-                type: 'video' 
-            },
-            { 
-                src: 'video/video2.webm', 
-                title: 'Vaisuhhhh\'s💜 Video Memories 2', 
-                description: 'More incredible video moments showing Vaisuhhhh\'s vibrant energy and beautiful smile in action!', 
-                type: 'video' 
-            },
-            { 
-                src: 'video/video3.webm', 
-                title: 'Vaisuhhhh\'s💜 Video Memories 3', 
-                description: 'The final video collection - capturing Vaisuhhhh\'s most precious moving memories for this special birthday celebration!', 
-                type: 'video' 
-            }
-        ];
+             const memoryImages = [
+    { src: 'vaisuhh-photos/Snapchat-1655543332.jpg', title: 'Vaisuhhh... 💜 Cute Snapchat Vibes', description: 'Every snap feels like a piece of art when it’s Vaisuhhh... smile lighting it up. The kind of cuteness that makes hearts skip a beat.' },
+    { src: 'vaisuhh-photos/IMG_20250111_121039.jpg', title: 'Vaisuhhh... 💜 Stylish Glow', description: 'She doesn’t just wear outfits, she owns them. Pure elegance wrapped in natural beauty.' },
+    { src: 'vaisuhh-photos/Snapchat-1974527526.jpg', title: 'Vaisuhhh... 💜 Heart-Melting Selfie', description: 'No filter could ever match the glow she naturally carries—this is the beauty that leaves me speechless.' },
+    { src: 'vaisuhh-photos/IMG_20250127_120918.jpg', title: 'Vaisuhhh... 💜 New Memories', description: '2025 already looks brighter with Vaisuhhh... smiles creating moments worth keeping forever.' },
+    { src: 'vaisuhh-photos/Snapchat-1244240034.jpg', title: 'Vaisuhhh... 💜 Precious Moments', description: 'Some smiles are rare, some are unforgettable—Vaisuhhh...s is both. The kind that warms every heart around.' },
+    { src: 'vaisuhh-photos/Snapchat-589800402.jpg', title: 'Vaisuhhh... 💜 Creative Magic', description: 'Turning even the simplest snap into something full of charm—she makes creativity look effortless.' },
+    { src: 'vaisuhh-photos/IMG_20240827_102853.jpg', title: 'Vaisuhhh... 💜 Little Adventures', description: 'Every place feels brighter with Vaisuhhh... in it—Vaisuhhh... smile can turn anywVaisuhhh...e into paradise.' },
+    { src: 'vaisuhh-photos/IMG-20220613-WA0009.jpg', title: 'Vaisuhhh... 💜 Timeless Beauty', description: 'A throwback that proves she’s not just stylish today—she’s always been unforgettable.' },
+    { src: 'vaisuhh-photos/Screenshot_20220917_000445.jpg', title: 'Vaisuhhh... 💜 Digital Charm', description: 'Even a simple screenshot carries Vaisuhhh... spark. That’s how powerful Vaisuhhh... presence is.' },
+    { src: 'vaisuhh-photos/Snapchat-1746931653.jpg', title: 'Vaisuhhh... 💜 Playful Side', description: 'Filters may add sparkle, but it’s Vaisuhhh... natural charm that makes everything shine brighter.' },
+    { src: 'vaisuhh-photos/IMG-20250124-WA0042.jpg', title: 'Vaisuhhh... 💜 2025 Glow', description: 'A new year, the same stunning energy. She makes every day in 2025 feel special already.' },
+    { src: 'vaisuhh-photos/IMG_20230323_135301.jpg', title: 'Vaisuhhh... 💜 Spring Freshness', description: 'Like spring itself—full of new beginnings, freshness, and beauty that feels endless.' },
+    { src: 'vaisuhh-photos/IMG_20230705_163438.jpg', title: 'Vaisuhhh... 💜 Summer Glow', description: 'She’s the sunshine in every summer day—warm, radiant, and impossible to look away from.' },
+    { src: 'vaisuhh-photos/IMG_20250111_121215.jpg', title: 'Vaisuhhh... 💜 New Year Beauty', description: 'Starting the year with grace and elegance. If 2025 had a face, it would be Vaisuhhh...s.' },
+    { src: 'vaisuhh-photos/IMG_20250127_190957.jpg', title: 'Vaisuhhh... 💜 Evening Elegance', description: 'Some evenings are beautiful, but none as breathtaking as when she’s in them.' },
+    { src: 'vaisuhh-photos/IMG_20250405_132245.jpg', title: 'Vaisuhhh... 💜 Spring Day Bliss', description: 'A perfect spring day feels even more perfect with Vaisuhhh... smile brightening it.' },
+    { src: 'vaisuhh-photos/RECAP_exported_16533.jpg', title: 'Vaisuhhh... 💜 Story of the Year', description: 'A recap that shows just one truth—every moment with Vaisuhhh... is a highlight.' },
+    { src: 'vaisuhh-photos/Snapchat-115020311.jpg', title: 'Vaisuhhh... 💜 Playful Snaps', description: 'Joy, fun, and a touch of magic—every snap proves she knows how to make life beautiful.' },
+    { src: 'vaisuhh-photos/Snapchat-1277222546.jpg', title: 'Vaisuhhh... 💜 Sparkling Soul', description: 'The kind of sparkle no camera can capture fully—Vaisuhhh... presence lights up everything.' },
+    { src: 'vaisuhh-photos/Snapchat-1294605687.jpg', title: 'Vaisuhhh... 💜 Colorful World', description: 'She doesn’t just live in colors—she creates them. Vaisuhhh... vibe makes life more vibrant.' },
+    { src: 'vaisuhh-photos/Snapchat-1481488708.jpg', title: 'Vaisuhhh... 💜 Cutest Moments', description: 'Adorable doesn’t even begin to cover it—Vaisuhhh... sweetness is something rare and special.' },
+    { src: 'vaisuhh-photos/Snapchat-1589774218.jpg', title: 'Vaisuhhh... 💜 Fire Look', description: 'Confidence, beauty, and elegance—all in one. She’s fire and charm at the same time.' },
+    { src: 'vaisuhh-photos/Snapchat-2136970077.jpg', title: 'Vaisuhhh... 💜 Fresh Vibes', description: 'Every glance feels like a breath of fresh air—Vaisuhhh... presence is pure refreshment.' },
+    { src: 'vaisuhh-photos/Snapchat-457702673.jpg', title: 'Vaisuhhh... 💜 Dreamy Look', description: 'Like something straight out of a dream—soft, surreal, and unforgettable.' },
+    { src: 'vaisuhh-photos/Snapchat-554945129.jpg', title: 'Vaisuhhh... 💜 Pure Grace', description: 'Grace is not just how she moves—it’s who she is. Effortless beauty in every frame.' },
+    { src: 'vaisuhh-photos/Snapchat-984924612~2.jpg', title: 'Vaisuhhh... 💜 Queen Energy', description: 'The queen of hearts, beauty, and elegance—she deserves to be celebrated always.' },
+
+    // Video memories
+    { src: 'video/video1.webm', title: 'Vaisuhhh... 💜 Video Memory 1', description: 'Every move, every smile—it’s like watching poetry in motion.' , type: 'video' },
+    { src: 'video/video2.webm', title: 'Vaisuhhh... 💜 Video Memory 2', description: 'She’s not just beautiful in pictures, she’s breathtaking in motion too.' , type: 'video' },
+    { src: 'video/video3.webm', title: 'Vaisuhhh... 💜 Video Memory 3', description: 'The final video that proves it all—she’s the kind of memory you never forget.' , type: 'video' }
+];
 
         let currentSlide = 0;
         let slideInterval;
@@ -3533,3 +3518,4 @@
     </script>
 </body>
 </html>
+
